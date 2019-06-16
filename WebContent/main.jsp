@@ -8,35 +8,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/type.css" type="text/css"  media="all"/>
 <script type="text/javascript" src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 <style type="text/css">
-#me{
-width:80px;
-height: 100px;
-background-color: red;
-position: absolute;
-}
-.other{
-width:80px;
-height: 100px;
-background-color: yellow;
-position: absolute;
-}
-#main{
-width:100%;
-height: 800px;
-margin: auto;
-border: 1px solid black;
-position: relative;
-}
-#sp{
-width:300px;
-height: 80px;
-border: 1px solid black;
-position: absolute;
-transform-origin: 0 50%;
-}</style>
+
+</style>
 
 </head>
 <body>
