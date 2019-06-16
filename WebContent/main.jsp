@@ -7,42 +7,55 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css"/>
+<script type="text/javascript" src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 <style type="text/css">
 #me{
 width:80px;
 height: 100px;
 background-color: red;
-position:absolute;
+position: absolute;
 }
 .other{
 width:80px;
 height: 100px;
 background-color: yellow;
-position:absolute;
+position: absolute;
 }
 #main{
-width:80%;
+width:100%;
 height: 800px;
 margin: auto;
 border: 1px solid black;
+position: relative;
 }
-</style>
-
+#sp{
+width:300px;
+height: 80px;
+border: 1px solid black;
+position: absolute;
+transform-origin: 0 50%;
+}</style>
 
 </head>
 <body>
 <input id="name" type="hidden" value="${name}">
-<div id="main">
+<div id="main" onmousemove="point(event)">
 
 
-<div id="me"></div>
+<div id="me">
+
+</div>
+<div id="sp"></div>
 </div>
 
 
-</body>
-<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-<script type="text/javascript">
 
+
+</body>
+
+<script type="text/javascript" >
 var me = document.getElementById("me");
 var name = document.getElementById("name").value;
 var main = document.getElementById("main");
@@ -57,25 +70,24 @@ document.onkeypress=function(e){
 	var s = String.fromCharCode(code);
 	switch(s){
 	case 'd':
-		x++;
+		x=x+10;
 		me.style.left=x+"px";
 		break;
 	case 'w':
-		y--;
+		y-=10;
 		me.style.top=y+"px";
 		break;
 	case 'a':
-		x--;
+		x-=10;
 		me.style.left=x+"px";
 		break;
 	case 's':
-		y++;
+		y+=10;
 		me.style.top=y+"px";
 		break;
 	}
-
+	point(event);
 }
-
 function draw(){
 	
 	
@@ -110,10 +122,36 @@ function draw(){
 			draw();
 		}
 	})
-	
-	
-	
-	
 }
+
+var pointX;
+var pointY;
+var centerY;
+var centerX ;
+var b ;
+var angle=0;
+var sp = document.getElementById("sp");
+function point(e){
+			centerX=x+40;
+			centerY=y+50;
+			pointX=e.clientX;
+			pointY=e.clientY;
+			b=(centerY-pointY)/(pointX-centerX);
+			
+			angle = ((Math.atan(b))*180/3.1415926);
+			if(b<0){
+				angle+=360;	
+			}if((centerY-pointY)>0&&(pointX-centerX)<0){
+				angle+=180;
+			}
+			if((centerY-pointY)<0&&(pointX-centerX)<0){
+				angle+=180;
+			}
+			sp.style.transform="rotateZ(-"+angle+"deg)";
+			sp.style.top=y+"px";
+			sp.style.left=(x+40)+"px";
+		}
+
+
 </script>
 </html>
