@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>登陆页面</title>
+		<title>注册页面</title>
 		<link rel="stylesheet" href="css/style.css" type="text/css" 
 			media="all"/>
 		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
@@ -17,14 +17,14 @@
 			<div class="row clearfix">
 		<div class="col-md-12 column">
 			<ul class="nav nav-pills">
-				<li class="active">
+				<li >
 					 <a href="#">首页</a>
 				</li>
 				<li>
 					 <a href="#">登陆</a>
-				</li>
-				<li>
-					 <a href="signup.jsp">注册</a>
+				</li >
+				<li class="active">
+					 <a href="#">注册</a>
 				</li>
 				<li class="dropdown pull-right">
 					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">忘记密码？<strong class="caret"></strong></a>
@@ -43,10 +43,11 @@
 	</div>
 	<div class="row clearfix" style="margin-top:20px">
 		<div class="col-md-12 column">
-			<form class="form-horizontal" role="form" action="join" method="post">
+			<form class="form-horizontal" role="form" action="user" method="post">
 				<div class="form-group">
 					 <label for="username" class="col-sm-2 control-label">Username</label>
 					<div class="col-sm-4">
+						<input type="hidden" name="act"  value="addUser"/>
 						<input type="text" name="rid" class="form-control" id="username" />
 					</div>
 				</div>

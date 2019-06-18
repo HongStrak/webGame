@@ -2,6 +2,7 @@ package com.servlet;
 import com.Config.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.Tank;
+import com.model.User;
+import com.util.JdbcUtil;
 
 
 
@@ -32,13 +35,29 @@ public class join extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("name");
-		request.setAttribute("name", name);
-		ArrayList<Tank> tl = config.tl;
-		Tank t = new Tank();
-		t.setName(name);
-		tl.add(t);
-		request.getRequestDispatcher("main.jsp").forward(request, response);
+		String name = request.getParameter("rid");
+		String password=request.getParameter("password");
+		JdbcUtil jdbc=new JdbcUtil();
+		String sql="select * from tb_user";
+		List<User> list=jdbc.queryPreparedStatement(sql, null, User.class);
+		for(int i=0;i<list.size();i++)
+		{
+			if(name.equals(list.get(i).getId()+"")&&password.equals(list.get(i).getPassword()))
+			{
+				request.setAttribute("name", name);
+				ArrayList<Tank> tl = config.tl;
+				Tank t = new Tank();
+				t.setName(name);
+				tl.add(t);
+				request.getRequestDispatcher("main.jsp").forward(request, response);
+			}
+			else
+			{
+				request.setAttribute("mess", "用户名或者密码错误");
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			}
+		}
+		
 	}
 
 	/**
