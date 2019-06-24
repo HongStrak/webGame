@@ -1,5 +1,7 @@
 package com.servlet;
 import com.Config.*;
+import com.dao.UserImpl;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Tank;
 import com.model.User;
+import com.service.IUserService;
+import com.service.UserService;
 import com.util.JdbcUtil;
 
 
@@ -37,26 +41,25 @@ public class join extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("rid");
 		String password=request.getParameter("password");
-		JdbcUtil jdbc=new JdbcUtil();
-		String sql="select * from tb_user";
-		List<User> list=jdbc.queryPreparedStatement(sql, null, User.class);
-		for(int i=0;i<list.size();i++)
+		Boolean b=false;
+		IUserService userservice=new UserService();
+		List<User> list=userservice.query();
+		User user=list.get(0);
+		
+		if(name.equals(user.getId()+"")&&password.equals(user.getPassword()))
 		{
-			if(name.equals(list.get(i).getId()+"")&&password.equals(list.get(i).getPassword()))
-			{
 				request.setAttribute("name", name);
 				ArrayList<Tank> tl = config.tl;
 				Tank t = new Tank();
 				t.setName(name);
 				tl.add(t);
 				request.getRequestDispatcher("main.jsp").forward(request, response);
-			}
-			else
-			{
-				request.setAttribute("mess", "用户名或者密码错误");
-				request.getRequestDispatcher("index.jsp").forward(request, response);
-			}
 		}
+			
+		
+		
+		
+		
 		
 	}
 
