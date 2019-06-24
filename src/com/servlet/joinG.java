@@ -35,7 +35,7 @@ public class joinG extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-				String name = (String) request.getAttribute("username");
+				String name = request.getParameter("username");
 				ArrayList<Tank> tl = config.tl;
 				Tank t = new Tank();
 				t.setName(name);

@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<from action="joinG" method="get">
+<form action="joinG" >
 <input type="text" name="username" >
 
-<button type="submit">sign in</button>
-</from>
+<input type="submit">
+</form>
 
 </body>
 </html>
