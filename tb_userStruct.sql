@@ -1,6 +1,6 @@
 -----------------------------------------
 -- Export file for user SCOTT          --
--- Created by ут╫║ on 2019/6/25, 9:49:47 --
+-- Created by О©╫т╫О©╫ on 2019/6/25, 9:49:47 --
 -----------------------------------------
 
 set define off
@@ -12,7 +12,7 @@ prompt ======================
 prompt
 create table TB_USER
 (
-  rid      NUMBER(10),
+  rid      varchar2(8),
   password VARCHAR2(20)
 )
 ;
