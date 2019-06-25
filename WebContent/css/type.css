@@ -1,9 +1,10 @@
 @charset "utf-8";
 #me{
 width:80px;
-height: 100px;
+height: 80px;
 background-color: red;
 position: absolute;
+border-radius: 100%;
 }
 .other{
 width:80px;
