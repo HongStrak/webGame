@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -75,6 +76,9 @@ public class JdbcUtil {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
 	public List queryPreparedStatement(String sql,List<Object> params,Class clazz){
 		getConn();
 		List<Object> result = new ArrayList<Object>();
@@ -146,4 +150,27 @@ public class JdbcUtil {
 		return result;
 	}
 	
+	
+	/**
+	 * 关闭连接资源
+	 * 
+	 * @param conn Connection
+	 * @param stmt Statement PreparedStatement
+	 * @param rs   ResultSet
+	 */
+	public void closeAll(Connection conn, Statement stmt, ResultSet rs) {
+		try {
+			if (rs != null) {
+				rs.close();
+			}
+			if (stmt != null) {
+				stmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
