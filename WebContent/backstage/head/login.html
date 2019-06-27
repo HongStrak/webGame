@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登陆</title>
+<link href="/javaex/pc/css/icomoon.css" rel="stylesheet" />
+<link href="/javaex/pc/css/animate.css" rel="stylesheet" />
+<link href="/javaex/pc/css/common.css" rel="stylesheet" />
+<link href="/javaex/pc/css/skin/tina.css" rel="stylesheet" />
+<script src="/javaex/pc/lib/jquery-1.7.2.min.js"></script>
+<script src="/javaex/pc/js/common.js"></script>
+<script src="/javaex/pc/js/javaex.min.js"></script>
+<script src="/javaex/pc/js/javaex-formVerify.js"></script>
+</head>
+<style>
+	body{background-color: #fff;}
+	.login-form{background: #fff;margin:40px;}
+	.login-title{font-size: 20px;text-align: center;margin-bottom: 25px;}
+	.login-item{display: flex;margin-bottom: 14px;}
+	.login-link{margin-bottom: 14px;}
+	.login-link label, .login-link a{color: #9B9B9C;}
+	.login-link a{font-size: 14px;}
+	.login-text{min-height: 40px;width: 100%;color: #B3B3B3;font-size: 14px;border: 1px solid #EEEFF0;border-radius: 3px;font-family: Helvetica, "microsoft yahei", sans-serif;padding-left: 16px;outline: none;}
+	.button.login{background-color: #2D9C8B;color: white;width: 100%;border-radius: 3px;font-size: 14px;height: 40px;line-height: 40px;}
+	.login-link .line{display: inline-block;width: 1px;height: 12px;background-color: #EEEEEE;margin: 0 6px;}
+</style>
+<body>
+	<!--登录-->
+	<div class="login-form">
+		<form id="login" method="post">
+			<!--标题-->
+			<div class="login-title">登录</div>
+			<!--用户名-->
+			<div class="login-item">
+				<input type="text" class="login-text" id="login_name" name="username" data-type="必填" placeholder="用户名" />
+			</div>
+			<!--密码-->
+			<div class="login-item">
+				<input type="password" class="login-text" name="password" data-type="必填" placeholder="请输入密码" />
+			</div>
+			<!--登录按钮-->
+			<div class="login-item">
+				<input type="button" id="submit" class="button login" value="登录" />
+			</div>
+			<!--底部链接-->
+			<div class="login-link">
+				<label zoom="0.9"><input type="checkbox" class="fill" checked/>下次自动登录</label>
+
+				<span style="float: right;">
+					<a href="#" target="_blank">忘记密码</a>
+					<span class="line"></span>
+					<a href="javascript:;" onclick="showDiv1()">注册</a>
+				</span>
+			</div>
+		</form>
+	</div>
+</body>
+<script>
+	// 监听点击保存按钮事件
+	$("#submit").click(function() {
+		// 表单验证函数
+		if (javaexVerify()) {
+			// 返回错误信息时，可以添加自定义异常提示。参数为元素id和提示
+			// addErrorMsg("username", "用户名不存在");
+			// 提交
+			// $("#form").submit();
+			
+			 $.ajax({
+	            //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType:"text",//预期服务器返回的数据类型
+                url: "/emp" ,//url
+                data:$('#login').serialize(),
+                success:function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                	if(result == "true"){
+	                    parent.location.reload();
+                	}
+                },
+                error : function(result) {
+                	console.log(result);
+                    alert("异常！");
+                }
+            });
+		} else {
+			return false;
+		}
+	});
+</script>
+</html>
