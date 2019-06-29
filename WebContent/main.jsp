@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="css/type.css" type="text/css"  media="all"/>
 <script type="text/javascript" src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="js/draw.js"></script>
 <style type="text/css">
 
 </style>
@@ -38,6 +39,7 @@ var name = document.getElementById("name").value;
 var main = document.getElementById("main");
 var y=0;
 var x=0;
+draw();
 var sid = setInterval("draw()", 20);
 me.style.top=y+"px";
 me.style.left=x+"px";
