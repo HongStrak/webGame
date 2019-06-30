@@ -4,6 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -11,7 +16,7 @@
 <link rel="stylesheet" href="css/type.css" type="text/css"  media="all"/>
 <script type="text/javascript" src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-<script type="text/javascript" src="js/draw.js"></script>
+<script type="text/javascript" src="127.0.0.1:8080/webGame/WebContent/js/draw.js"></script>
 <style type="text/css">
 
 </style>
@@ -20,7 +25,7 @@
 <body>
 <input id="name" type="hidden" value="${name}">
 <div id="main" onmousemove="point(event)">
-
+<%=basePath %>
 
 <div id="me">
 
