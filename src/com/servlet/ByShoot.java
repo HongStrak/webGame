@@ -9,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Config.config;
 import com.model.Tank;
 import com.service.JsonUtils;
-import com.Config.*;
+
 /**
- * Servlet implementation class ctrl
+ * Servlet implementation class ByShoot
  */
-@WebServlet("/ctrl")
-public class ctrl extends HttpServlet {
+@WebServlet("/ByShoot")
+public class ByShoot extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ctrl() {
+    public ByShoot() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +32,12 @@ public class ctrl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//这俩行的代码是必要的
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		ArrayList<Tank> tl = config.tl;
-		String name = request.getParameter("name");
-		String x = request.getParameter("x");
-		String y = request.getParameter("y");
 		
-		
-		config.update(name,x,y);
+		String str = request.getParameter("tt");
+		ArrayList tl = config.tl;
 		String json = JsonUtils.objectToJson(tl);
 		response.getWriter().print(json);
 	}

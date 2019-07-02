@@ -10,15 +10,18 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="css/type.css" type="text/css"  media="all"/>
-<!-- <script type="text/javascript" src="bootstrap-3.3.7/js/bootstrap.min.js"></script> -->
+
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 <script type="text/javascript" src="js/draw.js"></script>
 
-
+<script>
+var rangeLen=200;
+var rangeAng=60;
+</script>
 </head>
 <body>
 <input id="name" type="hidden" value="${name}">
-<div id="main" onmousemove="point(event)">
+<div id="main" onmousemove="point(event)" >
 
 
 <div id="me">
@@ -29,7 +32,7 @@
 
 
 
-
+<input type="button" onclick="ByShoot()" value="shoot"> 
 </body>
 
 <script type="text/javascript" >
@@ -38,7 +41,7 @@ var name = document.getElementById("name").value;
 var main = document.getElementById("main");
 var y=0;
 var x=0;
-alert(name);
+
 var sid = setInterval("draw()", 20);
 me.style.top=y+"px";
 me.style.left=x+"px";
@@ -66,6 +69,7 @@ document.onkeypress=function(e){
 	}
 	point(event);
 }
+
 function draw(){
 	
 	
@@ -77,6 +81,7 @@ function draw(){
 		data:{'name':name,
 			'y':y,'x':x},
 		dataType:"json",
+/* 		traditional: true, */
 		success:function(result){
 			$.each(result,function(index,iteam){
 				if(iteam.name!=name){
@@ -85,9 +90,14 @@ function draw(){
 						oth = document.createElement("div");
 						oth.setAttribute("id",iteam.name);
 						oth.setAttribute("class","other");
+						oth.setAttribute("x",iteam.x+40);
+						oth.setAttribute("y",iteam.y+40);
+						oth.setAttribute("hp",iteam.hp);
 						main.appendChild(oth);
 						oth.innerHTML=iteam.name;
 					}else{
+						oth.setAttribute("x",iteam.x);
+						oth.setAttribute("y",iteam.y);
 						oth.style.top=iteam.y+"px";
 						oth.style.left=iteam.x+"px";
 					}
@@ -101,6 +111,9 @@ function draw(){
 		}
 	})
 }
+id("main").onclick=function(){
+	myjson("ByShoot",);
+}
 
 var pointX;
 var pointY;
@@ -108,7 +121,8 @@ var centerY;
 var centerX ;
 var b ;
 var angle=0;
-var sp = document.getElementById("sp");
+var sp = id("sp");
+sp.appendChild(drawSector(0,40,200,60));
 function point(e){
 			centerX=x+40;
 			centerY=y+50;
@@ -128,7 +142,8 @@ function point(e){
 			sp.style.transform="rotateZ(-"+angle+"deg)";
 			sp.style.top=y+"px";
 			sp.style.left=(x+40)+"px";
-		}
+}
+
 
 
 </script>
