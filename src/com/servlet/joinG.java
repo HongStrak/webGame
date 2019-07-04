@@ -41,8 +41,7 @@ public class joinG extends HttpServlet {
 				t.setName(name);
 				tl.add(t);
 				request.setAttribute("name", name);
-				response.sendRedirect("main.jsp");
-		//		request.getRequestDispatcher("main.jsp").forward(request, response);
+				request.getRequestDispatcher("main.jsp").forward(request, response);
 			
 		
 	}
