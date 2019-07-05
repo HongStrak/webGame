@@ -38,8 +38,12 @@ public class ctrl extends HttpServlet {
 		String x = request.getParameter("x");
 		String y = request.getParameter("y");
 		
-		
-		config.update(name,x,y);
+		for(Tank t:tl){
+			if(t.getName().equals(name)){
+				t.setX(x);
+				t.setY(y);
+			}
+		}
 		String json = JsonUtils.objectToJson(tl);
 		response.getWriter().print(json);
 	}

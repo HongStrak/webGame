@@ -88,7 +88,7 @@ return c;
 }
 function xyToAngle(x0,y0,x1,y1){
 	var b = (y0-y1)/(x1-x0);
-	angle = atan(b);
+	var angle = atan(b);
 if(b<0){
 		angle+=360;
 }
@@ -101,12 +101,16 @@ if(b<0){
 	angle = formatAn(angle);
 	return angle;
 }
-function isByShoot(oth){
+function isByShoot(oth,angle){
+	angle = formatAn(angle);
+	
 	var xo = int(oth.getAttribute("x"));
 	var yo = int(oth.getAttribute("y"));
-	var distance = sqrt(sq(x-xo)+sq(y-yo));
-	var disAn = xyToAngle(x,y,xo,yo);
-	if(distance<rangeLen&&formatAn(disAn-angle)<rangeAng){
+	var x1=x+40;
+	var y1=y+40;
+	var distance = sqrt(sq(x1-xo)+sq(y1-yo));
+	var disAn = xyToAngle(x1,y1,xo,yo);
+	if(distance<rangeLen&&(formatAn(disAn-angle)<rangeAng/2||formatAn(disAn-angle)>(360-rangeAng/2))){
 		return true;
 	}else{
 		return false;
@@ -129,23 +133,7 @@ function whoByShoot(){
 function cstyle(id,style){
 	id.style.cssText+=style;
 }
-function myjson(url,data){
-	
-	$.ajax({
-		url:url,
-		type:"get",
-		data:{data},
-		dataType:"json",
-/* 		traditional: true, */
-		success:function(result){
-			alert(result[0].name);
-		},
-		error:function(){
-			/* alert("请求失败"); */
-			myjson(url,data);
-		}
-	})
-}
+
 
 
 
