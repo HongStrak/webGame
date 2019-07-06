@@ -17,6 +17,7 @@
 <script>
 var rangeLen=200;
 var rangeAng=60;
+var attack=10;
 </script>
 </head>
 <body>
@@ -45,7 +46,7 @@ var x=0;
 var sid = setInterval("draw()", 20);
 me.style.top=y+"px";
 me.style.left=x+"px";
-me.innerHTML=name;
+
 document.onkeypress=function(e){
 	var code = e.keyCode;
 	var s = String.fromCharCode(code);
@@ -94,14 +95,19 @@ function draw(){
 						oth.setAttribute("y",iteam.y+40);
 						oth.setAttribute("hp",iteam.hp);
 						main.appendChild(oth);
-						oth.innerHTML=iteam.name;
+						oth.innerHTML=iteam.name+":"+iteam.hp;
 					}else{
-						oth.setAttribute("x",iteam.x);
-						oth.setAttribute("y",iteam.y);
+						oth.setAttribute("hp",iteam.hp);
+						oth.setAttribute("x",int(iteam.x)+40);
+						oth.setAttribute("y",int(iteam.y)+40);
 						oth.style.top=iteam.y+"px";
 						oth.style.left=iteam.x+"px";
+						oth.innerHTML=iteam.name+":"+iteam.hp;
 					}
 					
+				}else{
+					me.setAttribute("hp",iteam.hp);
+					me.innerHTML=iteam.name+":"+iteam.hp;
 				}
 			})
 		},
@@ -112,7 +118,27 @@ function draw(){
 	})
 }
 id("main").onclick=function(){
-	myjson("ByShoot",);
+	
+	$.each(clz("other"),function(index,iteam){
+		if(isByShoot(iteam,angle)){
+			
+			$.ajax({
+				url:"ByShoot",
+				type:"get",
+				data:{'attack':attack,'name':iteam.getAttribute("id")},
+				dataType:"json",
+		/* 		traditional: true, */
+				success:function(result){
+					
+				},
+				error:function(){
+					 alert("请求失败");
+					
+				}
+			})
+		}
+	});
+	
 }
 
 var pointX;

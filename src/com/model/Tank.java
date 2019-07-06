@@ -3,7 +3,7 @@ package com.model;
 public class Tank {
 private String x;
 private String y;
-private int hp;
+private int hp=100;
 public int getHp() {
 	return hp;
 }
