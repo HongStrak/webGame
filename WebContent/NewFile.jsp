@@ -170,7 +170,7 @@ body {
 		<div class="picture">游戏首页</div>
 		<div class="table">
 			<ul>
-				<li>游戏资料</li>
+				<li><a href="#">游戏资料</a></li>
 				<li>角色信息</li>
 				<li>充值购买</li>
 				<li>游戏下载</li>
