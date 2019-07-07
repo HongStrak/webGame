@@ -65,7 +65,7 @@
 #btnbegin {
 	background-color: cornsilk;
 	position: relative;
-	top: 5px;
+	top: -45px;
 	left: 630px;
 }
 
@@ -74,11 +74,13 @@
 }
 
 #login {
+    top: 10px;
 	position: relative;
 	left: 100px;
 }
 
 .banner {
+    margin-top:30px;
 	height: 55px;
 	/*background-color: black;*/
 }
@@ -171,23 +173,25 @@ body {
 		<div class="table">
 			<ul>
 				<li><a href="#">游戏资料</a></li>
-				<li>角色信息</li>
-				<li>充值购买</li>
-				<li>游戏下载</li>
+				<li><a href="#">角色信息</a></li>
+				<li><a href="#">充值购买</a></li>
+				<li><a href="#">游戏下载</a></li>
 			</ul>
 		</div>
+		
 		<div class="search">
 			<input class="kuang" type="text" name="name" /> <input class="btn"
-				type="button" value="战绩查询" />
+				type="button" value="战绩查询"  onclick="location.href='History.jsp'"  />
 		</div>
 		<div class="login">
 
 			<a href="#">注册</a>
+			
 		</div>
 	</div>
-	<input id="btnbegin" type="button" value="点击登录" onclick="showdiv();"
+	
+<input id="btnbegin" type="button" value="点击登录" onclick="showdiv();"
 		style="width: 80px; height: 40px; opacity: 0.8;" />
-
 	<div id="bg">
 
 		<div id="img">
