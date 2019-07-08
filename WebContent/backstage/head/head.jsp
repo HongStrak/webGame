@@ -30,12 +30,12 @@
 		<div class="admin-iframe-header-right">
 			<ul class="navs">
 				<li class="nav">
-					<c:if test="${sessionScope.username != null }">
-						<p class="pull-left margin-left-10">欢迎您，<span>${sessionScope.username }</span></p>
+					<c:if test="${sessionScope.loginname != null }">
+						<p class="pull-left margin-left-10">欢迎您，<span>${sessionScope.loginname }</span></p>
 						<label class="margin-left-10">|</label>
-						<a href="../checkout">退出</a>
+						<a href="javascript:checkout();">退出</a>
 					</c:if>
-					<c:if test="${sessionScope.username == null }">
+					<c:if test="${sessionScope.loginname == null }">
 						<a href="javascript:login();">登陆</a>
 					</c:if>
 				</li>
@@ -55,5 +55,25 @@
 			url : "/backstage/head/login.html",
 		});
 	};
+	
+	function checkout(){
+		 $.ajax({
+	            //几个参数需要注意一下
+           	 url: "/emp?act=checkout",//url
+             type: "get",//方法类型
+             dataType:"text",//预期服务器返回的数据类型
+             success:function (result) {
+                 console.log(result);//打印服务端返回的数据(调试用)
+             	if(result == "true"){
+                    location.reload();
+             	}
+             },
+             error : function(result) {
+             	console.log(result);
+                 alert("异常！");
+             }
+         });
+	}
+
 </script>
 </html>

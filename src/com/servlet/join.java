@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.model.Tank;
 import com.model.User;
 import com.service.IUserService;
-import com.service.UserService;
+import com.service.UserServiceImpl;
 import com.util.JdbcUtil;
 
 
@@ -42,7 +42,7 @@ public class join extends HttpServlet {
 		String name = request.getParameter("rid");
 		String password=request.getParameter("password");
 		Boolean b=false;
-		IUserService userservice=new UserService();
+		IUserService userservice=new UserServiceImpl();
 		List<User> list=userservice.query();
 		User user=list.get(0);
 		
