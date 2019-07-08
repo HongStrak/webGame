@@ -89,7 +89,7 @@ return c;
 function xyToAngle(x0,y0,x1,y1){
 	var b = (y0-y1)/(x1-x0);
 	var angle = atan(b);
-if(b<0){
+	if(b<0){
 		angle+=360;
 }
 	if((y0-y1)>0&&(x1-x0)<0){
@@ -132,6 +132,23 @@ function whoByShoot(){
 }
 function cstyle(id,style){
 	id.style.cssText+=style;
+}
+function moveX(){
+	var dis = cos(targetAn)*speed;
+	x+=dis;
+	me.style.left=x+"px";
+}
+function moveY(){
+	var dis = sin(targetAn)*speed;
+	y-=dis;
+	
+	me.style.top=y+"px";
+}
+function abval(val){
+	if(val<0){
+		val=-val;
+	}
+	return val;
 }
 
 

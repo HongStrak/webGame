@@ -18,11 +18,20 @@
 var rangeLen=200;
 var rangeAng=60;
 var attack=10;
+var speed=1;
+var y=0;
+var x=0;
+var targetX=x;
+var targetY=y;
+var targetAn=0;
+var centerY;
+var centerX ;
+var angle=0;
 </script>
 </head>
 <body>
 <input id="name" type="hidden" value="${name}">
-<div id="main" onmousemove="point(event)" >
+<div id="main" onmousemove="point(event)" onmousedown="move(event)">
 
 
 <div id="me">
@@ -37,38 +46,36 @@ var attack=10;
 </body>
 
 <script type="text/javascript" >
+document.oncontextmenu=function(){return false}; 
 var me = document.getElementById("me");
 var name = document.getElementById("name").value;
 var main = document.getElementById("main");
-var y=0;
-var x=0;
+
 
 var sid = setInterval("draw()", 20);
+var mid = setInterval("movexy()", 20);
 me.style.top=y+"px";
 me.style.left=x+"px";
+var pointX;
+var pointY;
 
-document.onkeypress=function(e){
-	var code = e.keyCode;
-	var s = String.fromCharCode(code);
-	switch(s){
-	case 'd':
-		x=x+10;
-		me.style.left=x+"px";
-		break;
-	case 'w':
-		y-=10;
-		me.style.top=y+"px";
-		break;
-	case 'a':
-		x-=10;
-		me.style.left=x+"px";
-		break;
-	case 's':
-		y+=10;
-		me.style.top=y+"px";
-		break;
+function move(event){
+	var btnNum = event.button;
+	if(btnNum==2){
+		
+		targetX=pointX;
+		targetY=pointY;
+		targetAn = xyToAngle(x,y,targetX,targetY);
 	}
-	point(event);
+}
+function movexy(){
+	if(abval(targetX-x)>2&&abval(targetY-y)>2){
+		moveX();
+		moveY();
+	}
+	sp.style.transform="rotateZ(-"+angle+"deg)";
+	sp.style.top=y+"px";
+	sp.style.left=(x+40)+"px";
 }
 
 function draw(){
@@ -141,33 +148,17 @@ id("main").onclick=function(){
 	
 }
 
-var pointX;
-var pointY;
-var centerY;
-var centerX ;
-var b ;
-var angle=0;
+
+
 var sp = id("sp");
 sp.appendChild(drawSector(0,40,200,60));
 function point(e){
-			centerX=x+40;
-			centerY=y+50;
-			pointX=e.clientX;
-			pointY=e.clientY;
-			b=(centerY-pointY)/(pointX-centerX);
+centerX=x+40;
+centerY=y+50;
+pointX=e.clientX;
+pointY=e.clientY;
+angle=xyToAngle(centerX,centerY,pointX,pointY);
 			
-			angle = ((Math.atan(b))*180/3.1415926);
-			if(b<0){
-				angle+=360;	
-			}if((centerY-pointY)>0&&(pointX-centerX)<0){
-				angle+=180;
-			}
-			if((centerY-pointY)<0&&(pointX-centerX)<0){
-				angle+=180;
-			}
-			sp.style.transform="rotateZ(-"+angle+"deg)";
-			sp.style.top=y+"px";
-			sp.style.left=(x+40)+"px";
 }
 
 
