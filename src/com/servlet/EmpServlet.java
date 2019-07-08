@@ -15,10 +15,10 @@ import com.service.IEmpService;
  * Servlet implementation class EmpServlet
  */
 @WebServlet("/emp")
-public class EmpServlet extends HttpServlet {
+public class EmpServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		String username = request.getParameter("username");
@@ -29,15 +29,18 @@ public class EmpServlet extends HttpServlet {
 		}
 		IEmpService service = new EmpServiceImpl();
 		if(service.checkEmp(username, password)){
-			request.getSession().setAttribute("username", username);
+			request.getSession().setAttribute("loginname", username);
 			response.getWriter().print("true");
 			//response.sendRedirect("backstage/index.jsp");
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	
+	protected void checkout(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+		request.getSession().removeAttribute("loginname");
+		//System.out.println("true");
+		response.getWriter().print("true");
+		//response.sendRedirect("/backstage/index.jsp");
 	}
-
 }
