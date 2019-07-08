@@ -35,6 +35,7 @@
 					<ul class="menu">
 						<li><a href="javascript:;">用户信息</a></li>
 						<li><a href="javascript:;">战绩管理</a></li>
+						<li><a href="javascript:;">封号管理</a></li>
 					</ul>
 				</li>
 			</ul>
