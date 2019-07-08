@@ -30,9 +30,9 @@ public class HisServlet extends BaseServlet {
 			
 			String sql="select * from (select t1.*,rownum num from "
 					+ "(select * from history order by heronum desc) t1 where rownum<="+pz*cp+") t2 "
-					+ "where t2.num>"+(cp-1)*pz+"and  1=1";
+					+ "where t2.num>"+(cp-1)*pz+"and  1=1 ";
 			if(heroname!=null && !heroname.equals("")){
-				sql+=" and heroname='?' ";
+				sql+=" and heroname=? ";
 			} 
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			if(heroname!=null && !heroname.equals("")){
