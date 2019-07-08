@@ -18,6 +18,7 @@
 -- ----------------------------
 -- Table structure for TB_USER
 -- ----------------------------
+
 DROP TABLE "SCOTT"."TB_USER";
 CREATE TABLE "SCOTT"."TB_USER" (
   "ID" NUMBER(11) NOT NULL ,
