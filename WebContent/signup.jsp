@@ -5,73 +5,129 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>注册页面</title>
-		<link rel="stylesheet" href="css/style.css" type="text/css" 
-			media="all"/>
-		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css"/>
-		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-		<script type="text/javascript" src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
-	</head>
-	<body>
-		<div class="container">
-			<div class="row clearfix">
-		<div class="col-md-12 column">
-			<ul class="nav nav-pills">
-				<li >
-					 <a href="#">首页</a>
-				</li>
-				<li>
-					 <a href="#">登陆</a>
-				</li >
-				<li class="active">
-					 <a href="#">注册</a>
-				</li>
-				<li class="dropdown pull-right">
-					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">忘记密码？<strong class="caret"></strong></a>
-					<ul class="dropdown-menu">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body>
+
+		<!-- Top menu -->
+		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">Bootstrap Flat Registration Form Template</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="top-navbar-1">
+					<ul class="nav navbar-nav navbar-right">
 						<li>
-							 <a href="#">重新注册</a>
+							<span class="li-text">
+								Put some text or
+							</span> 
+							<a href="#"><strong>links</strong></a> 
+							<span class="li-text">
+								here, or some icons: 
+							</span> 
+							<span class="li-social">
+								<a href="#"><i class="fa fa-facebook"></i></a> 
+								<a href="#"><i class="fa fa-twitter"></i></a> 
+								<a href="#"><i class="fa fa-envelope"></i></a> 
+								<a href="#"><i class="fa fa-skype"></i></a>
+							</span>
 						</li>
-						<li>
-							 <a href="#">找回密码</a>
-						</li>
-			
 					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="row clearfix" style="margin-top:20px">
-		<div class="col-md-12 column">
-			<form class="form-horizontal" role="form" action="user" method="post">
-				<div class="form-group">
-					 <label for="username" class="col-sm-2 control-label">Username</label>
-					<div class="col-sm-4">
-						<input type="hidden" name="act"  value="addUser"/>
-						<input type="text" name="rid" class="form-control" id="username" />
-					</div>
 				</div>
-				<div class="form-group">
-					 <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-					<div class="col-sm-4">
-						<input type="password"  name="password" class="form-control" id="inputPassword3" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<div class="checkbox">
-							 <label><input type="checkbox" />Remember me</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						 <button type="submit" class="btn btn-default">Sign in</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>	
-	</body>
-</html>
+			</div>
+		</nav>
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>Bootstrap</strong> Flat Registration Form</h1>
+                            <div class="description">
+                            	<p>
+	                            	This is a free responsive flat registration form made with Bootstrap. 
+	                            	Download it on <a href="#"><strong>AZMIND</strong></a>, customize and use it as you like!
+                            	</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    	<div class="col-sm-6 book">
+                    		<img src="assets/img/ebook.png" alt="">
+                    	</div>
+                        <div class="col-sm-5 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>Get our eBook</h3>
+                            		<p>Fill in the form below to get instant access:</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-pencil"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form role="form" action="user" method="post" class="registration-form">
+			         
+			                       <div class="form-group">
+			                            <input type="hidden" value="addUser" name="act"> 
+			                    		<label class="sr-only" for="form-first-name">Username</label>
+			                        	<input type="text" name="username" placeholder="Username..." class="form-first-name form-control" id="form-first-name">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-last-name">Last name</label>
+			                        	<input type="password" name="password" placeholder="Password..." class="form-last-name form-control" id="form-last-name">
+			                        </div>
+			                        <button type="submit" class="btn">Give it to me!</button>
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/retina-1.1.0.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>	
