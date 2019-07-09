@@ -39,12 +39,12 @@ public class join extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("rid");
+	/*	String name = request.getParameter("rid");
 		String password=request.getParameter("password");
 		Boolean b=false;
 		IUserService userservice=new UserServiceImpl();
-		List<User> list=userservice.query();
-		User user=list.get(0);
+	//	List<User> list=userservice.query();
+	//	User user=list.get(0);
 		
 		if(name.equals(user.getId()+"")&&password.equals(user.getPassword()))
 		{
@@ -54,7 +54,7 @@ public class join extends HttpServlet {
 				t.setName(name);
 				tl.add(t);
 				request.getRequestDispatcher("main.jsp").forward(request, response);
-		}
+		}*/
 			
 		
 		

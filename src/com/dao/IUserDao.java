@@ -5,8 +5,13 @@ import java.util.List;
 import com.model.User;
 
 public interface IUserDao {
-	public void addUser(User user);
-	public List<User> query();
+	/**
+	 *  增加用户
+	 * @param username 账号
+	 * @param password 密码
+	 */
+	public void addUser(String username,String password);
+	
 	
 	/**
 	 * 查询被封号的用户
