@@ -68,6 +68,11 @@
 		$(".search").click(function(){
 			var username = $("[name = username]").val();
 			
+			javaex.message({
+				content : "数据提交中，请稍候...",
+				type : "submit"
+			});
+			
 			
 			$.ajax({
 				url:"/user?act=selectAll",
@@ -77,6 +82,10 @@
 				
 				success:function(result){
 						console.log(result);
+						javaex.message({
+							content : "操作成功",
+							type : "success"
+						});
 						$("table > tbody").html("");
 						$.each(result.list,function(index,item){
 							$("table > tbody").append("<tr><td class=\"checkbox\"><label class=\"fill-label\"><input type=\"checkbox\" name=\"cond\" "
@@ -110,7 +119,10 @@
 					}
 				},
 				error:function(){
-					alert("请求失败！！！");
+					javaex.message({
+						content : "操作失败",
+						type : "error"
+					});
 				}
 			})
 		});
@@ -164,5 +176,9 @@
 		});
 		
 	})
+	
+	function callback() {
+			alert("确定退出");
+		}
 </script>
 </html>

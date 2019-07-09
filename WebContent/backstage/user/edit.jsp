@@ -46,7 +46,7 @@
 				<div class="unit clear" style="width: 800px;">
 					<div style="text-align: center;">
 						<!--表单提交时，必须是input元素，并指定type类型为button，否则ajax提交时，会返回error回调函数-->
-						<input type="button" id="return" class="button no" value="返回" />
+						<input type="button" id="return" class="button no" value="返回"  />
 						<input type="button" id="save" class="button yes" value="保存" />
 					</div>
 				</div>
@@ -68,8 +68,9 @@
                 success:function (result) {
                     console.log(result);//打印服务端返回的数据(调试用)
                 	if(result == "true"){
-                		alert("编辑成功");
-	                    parent.location.reload();
+                		//alert("编辑成功");
+                		parent.javaex.close();
+	                    parent.$(".search").click();
                 	}
                 },
                 error : function() {
@@ -79,7 +80,10 @@
 		} else {
 			return false;
 		}
-		
+	});
+	
+	$("#return").click(function(){
+		parent.javaex.close();
 	})
 
 </script>
