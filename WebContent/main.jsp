@@ -15,18 +15,24 @@
 <script type="text/javascript" src="js/draw.js"></script>
 
 <script>
+var time=5;
 var rangeLen=200;
 var rangeAng=60;
 var attack=10;
-var speed=1;
+var speed=2;
 var y=0;
 var x=0;
 var targetX=x;
 var targetY=y;
 var targetAn=0;
-var centerY;
-var centerX ;
+var centerY=y+40;
+var centerX=x+40;
+var alive=true;
 var angle=0;
+var volume=40;    //等于R 半径
+
+var pointX;
+var pointY;
 </script>
 </head>
 <body>
@@ -38,44 +44,52 @@ var angle=0;
 
 </div>
 <div id="sp"></div>
+<div id="death"><div id="time"><font size="4" color="green">复活倒计时：</font>
+<br>
+<input type="text" id="timeo">
+</div></div>
 </div>
 
 
 
-<input type="button" onclick="ByShoot()" value="shoot"> 
+
 </body>
 
 <script type="text/javascript" >
-document.oncontextmenu=function(){return false}; 
+var sp = id("sp");
+
 var me = document.getElementById("me");
 var name = document.getElementById("name").value;
 var main = document.getElementById("main");
-
+main.oncontextmenu=function(){return false}; 
 
 var sid = setInterval("draw()", 20);
 var mid = setInterval("movexy()", 20);
+var reid = null;
 me.style.top=y+"px";
 me.style.left=x+"px";
-var pointX;
-var pointY;
+/* sp.style.top=(y-40)+"px";
+sp.style.left=x+"px"; */
+
 
 function move(event){
 	var btnNum = event.button;
 	if(btnNum==2){
-		
-		targetX=pointX;
-		targetY=pointY;
+		targetX=pointX-volume;
+		targetY=pointY-volume;
 		targetAn = xyToAngle(x,y,targetX,targetY);
 	}
 }
 function movexy(){
-	if(abval(targetX-x)>2&&abval(targetY-y)>2){
+	if(abval(targetX-x)>2){
 		moveX();
+	}
+	if(abval(targetY-y)>2){
 		moveY();
 	}
 	sp.style.transform="rotateZ(-"+angle+"deg)";
 	sp.style.top=y+"px";
-	sp.style.left=(x+40)+"px";
+	sp.style.left=(x+volume)+"px";
 }
 
 function draw(){
@@ -91,32 +105,7 @@ function draw(){
 		dataType:"json",
 /* 		traditional: true, */
 		success:function(result){
-			$.each(result,function(index,iteam){
-				if(iteam.name!=name){
-					var oth = document.getElementById(iteam.name);
-					if(oth==null){
-						oth = document.createElement("div");
-						oth.setAttribute("id",iteam.name);
-						oth.setAttribute("class","other");
-						oth.setAttribute("x",iteam.x+40);
-						oth.setAttribute("y",iteam.y+40);
-						oth.setAttribute("hp",iteam.hp);
-						main.appendChild(oth);
-						oth.innerHTML=iteam.name+":"+iteam.hp;
-					}else{
-						oth.setAttribute("hp",iteam.hp);
-						oth.setAttribute("x",int(iteam.x)+40);
-						oth.setAttribute("y",int(iteam.y)+40);
-						oth.style.top=iteam.y+"px";
-						oth.style.left=iteam.x+"px";
-						oth.innerHTML=iteam.name+":"+iteam.hp;
-					}
-					
-				}else{
-					me.setAttribute("hp",iteam.hp);
-					me.innerHTML=iteam.name+":"+iteam.hp;
-				}
-			})
+			handle(result);
 		},
 		error:function(){
 			/* alert("请求失败"); */
@@ -127,14 +116,13 @@ function draw(){
 id("main").onclick=function(){
 	
 	$.each(clz("other"),function(index,iteam){
-		if(isByShoot(iteam,angle)){
+		if(isByShoot(iteam,angle)&&alive){
 			
 			$.ajax({
 				url:"ByShoot",
 				type:"get",
 				data:{'attack':attack,'name':iteam.getAttribute("id")},
 				dataType:"json",
-		/* 		traditional: true, */
 				success:function(result){
 					
 				},
@@ -150,15 +138,14 @@ id("main").onclick=function(){
 
 
 
-var sp = id("sp");
+
 sp.appendChild(drawSector(0,40,200,60));
 function point(e){
 centerX=x+40;
-centerY=y+50;
-pointX=e.clientX;
+centerY=y+40; 
+pointX=e.clientX-(document.body.clientWidth-1366)/2;
 pointY=e.clientY;
 angle=xyToAngle(centerX,centerY,pointX,pointY);
-			
 }
 
 

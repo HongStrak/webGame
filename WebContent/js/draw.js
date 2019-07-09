@@ -150,6 +150,83 @@ function abval(val){
 	}
 	return val;
 }
+//处理返回结果
+function handle(result){
+	$.each(result,function(index,iteam){
+		if(iteam.name!=name){
+			othHandle(iteam);
+		}else{
+			meHandle(iteam);
+		}
+	})
+}
+
+//处理自己
+function meHandle(iteam){
+	me.setAttribute("hp",iteam.hp);
+	me.innerHTML=iteam.name+":"+iteam.hp;
+	if(iteam.hp<=0){
+		
+		if(reid==null){
+			alive=false;
+			death();
+		}
+		
+	}
+}
+
+//oth处理
+function othHandle(iteam){
+	var oth = id(iteam.name);
+	if(iteam.hp<=0){
+		oth.remove();
+	}else{
+		if(oth==null){
+			oth = document.createElement("div");
+			oth.setAttribute("id",iteam.name);
+			oth.setAttribute("class","other");
+			oth.setAttribute("x",iteam.x+40);
+			oth.setAttribute("y",iteam.y+40);
+			oth.setAttribute("hp",iteam.hp);
+			main.appendChild(oth);
+			oth.innerHTML=iteam.name+":"+iteam.hp;
+		}else{
+			oth.setAttribute("hp",iteam.hp);
+			oth.setAttribute("x",int(iteam.x)+40);
+			oth.setAttribute("y",int(iteam.y)+40);
+			oth.style.top=iteam.y+"px";
+			oth.style.left=iteam.x+"px";
+			oth.innerHTML=iteam.name+":"+iteam.hp;
+		}
+	}
+}
+function death(){
+	id("death").style.top="0px";
+	reid = setInterval("revive()",1000);
+	
+}
+function revive(){
+	id("timeo").value=time--;
+
+	
+	if(time<=0){
+		id("death").style.top="800px";
+		clearInterval(reid);
+		
+		reid = null;
+		$.ajax({url:"revive",data:{'name':name},success:function(result){
+		time=5;
+		alive=true;
+	},
+	error:function(){
+		/* alert("请求失败"); */
+		revive();
+	}});
+	}
+	
+	
+
+}
 
 
 
