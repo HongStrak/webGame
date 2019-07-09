@@ -57,7 +57,12 @@
 	
 	// 控制页面载入
 	function page(url) {
-		$("#page").attr("src", url);
+		var loginname = "${loginname }";
+		if(loginname != null && loginname != ""){
+			$("#page").attr("src", url);
+		}else{
+			window.location.href="login.jsp";
+		}
 	};
 	
 	// 菜单保持高亮

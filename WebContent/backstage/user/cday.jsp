@@ -63,7 +63,6 @@
 <script type="text/javascript">
 
 	$(function(){
-		
 		var id;
 		
 		var nowpage = 1; //默认第一页
@@ -167,7 +166,6 @@
 				datatype:"json",
 				traditional:true,
 				success:function(result){
-					
 					javaex.alert({
 						content : "修改了"+result+"条数据",
 					});
