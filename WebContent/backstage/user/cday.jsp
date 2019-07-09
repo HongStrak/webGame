@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/backstage/head/link.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>用户管理</title>
+<title>封号管理页面</title>
 </head>
 <body>
 <!--主体内容-->
@@ -13,7 +14,7 @@
 	<!--块元素-->
 	<div class="block">
 		<!--页面有多个表格时，可以用于标识表格-->
-		<h2>标题 </h2>
+		<h2>标题</h2>
 		<!--右上角的返回按钮-->
 		<a href="javascript:history.back();">
 			<button class="button indigo radius-3" style="position: absolute;right: 20px;top: 16px;"><span class="icon-arrow_back"></span> 返回</button>
@@ -32,7 +33,7 @@
 			<!--表格上方的操作元素，添加、删除等-->
 			<div class="operation-wrap">
 				<div class="buttons-wrap">
-					<!-- <button class="button blue radius-3"><span class="icon-plus"></span> 添加</button> -->
+					<!-- <button id="add" class="button blue radius-3"><span class="icon-plus"></span> 添加</button> -->
 					<button id="edit" class="button green radius-3"><span class="icon-edit-2"></span> 编辑</button>
 					<button id="delete" class="button red radius-3"><span class="icon-close2"></span> 删除</button>
 				</div>
@@ -46,27 +47,27 @@
 						<th>密码</th>
 						<th>信用度</th>
 						<th>封号天数</th>
-					</tr>				
-					
-					</thead>
+					</tr>
+				</thead>
 				<tbody>
 				</tbody>
 			</table>
 			<div class="page">
 				<!-- <ul id="page" class="pagination"></ul> -->
 			</div>
+			
 		</div>
 	</div>
 </div>
 </body>
 <script type="text/javascript">
+
 	$(function(){
 		var id;
 		
 		var nowpage = 1; //默认第一页
 		
 		$(".search").click(function(){
-			var username = $("[name = username]").val();
 			
 			javaex.message({
 				content : "数据提交中，请稍候...",
@@ -74,29 +75,33 @@
 			});
 			
 			
+			var username = $("[name = username]").val();
+			
 			$.ajax({
-				url:"/user?act=selectAll",
+				url:"/user?act=cday",
 				type:"get",
 				data:{'username':username,'nowpage':nowpage},
 				dataType:"json",
 				
 				success:function(result){
-						console.log(result);
-						javaex.message({
-							content : "操作成功",
-							type : "success"
-						});
-						$("table > tbody").html("");
-						$.each(result.list,function(index,item){
-							$("table > tbody").append("<tr><td class=\"checkbox\"><label class=\"fill-label\"><input type=\"checkbox\" name=\"cond\" "
-									+"value=\""+item.id+"\"  class=\"fill listen-1-2\">"
-									+"<span class=\"fill-css icon-check\" style=\"color: #fff;\"></span><span></span></label></td>"
-									+"<td>"+(index+1)+"</td>"
-									+"<td>"+item.username+"</td>"
-									+"<td>"+item.password+"</td>"
-									+"<td>"+item.credit+"</td>"
-									+"<td>"+item.cday+"</td></tr>");
-						});
+					console.log(result);
+					
+					javaex.message({
+						content : "操作成功",
+						type : "success"
+					});
+					
+					$("table > tbody").html("");
+					$.each(result.list,function(index,item){
+						$("table > tbody").append("<tr><td class=\"checkbox\"><label class=\"fill-label\"><input type=\"checkbox\" name=\"cond\" "
+								+"value=\""+item.id+"\"  class=\"fill listen-1-2\">"
+								+"<span class=\"fill-css icon-check\" style=\"color: #fff;\"></span><span></span></label></td>"
+								+"<td>"+(index+1)+"</td>"
+								+"<td>"+item.username+"</td>"
+								+"<td>"+item.password+"</td>"
+								+"<td>"+item.credit+"</td>"
+								+"<td>"+item.cday+"</td></tr>");
+					});
 					if(result.byname != "true"){
 						$(".page").html("");
 						$(".page").append("<ul id=\"page\" class=\"pagination\"></ul>");
@@ -127,7 +132,6 @@
 			})
 		});
 		
-
 		$("#edit").click(function(){
 			var cond = document.getElementsByName("cond");
 			
@@ -162,7 +166,6 @@
 				datatype:"json",
 				traditional:true,
 				success:function(result){
-					
 					javaex.alert({
 						content : "修改了"+result+"条数据",
 					});
@@ -175,10 +178,12 @@
 			})
 		});
 		
+		
 	})
 	
 	function callback() {
 			alert("确定退出");
 		}
+
 </script>
 </html>
