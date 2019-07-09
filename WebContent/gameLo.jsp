@@ -135,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
 
-								<li><a href="#">新建房间</a></li>
+								<li><a href="#" onclick="test()">新建房间</a></li>
 								<li><a href="#">快速加入</a></li>
 							</ul></li>
 						<li>
@@ -147,224 +147,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</nav>
 		<div id="page-wrapper">
 			<div class="col-md-12 graphs">
-				<div class="xs">
-					<div class="form-group">
-						<div class="col-md-3"
-							style="border: 1px solid red; height: 100px; margin-left: 20px">
-							<form action="joinGame">
-							<div><input type="hidden" name="roomid" value="1"></div>
-								<table>
-									<tr>
-										<td>可容纳</td>
-										<td>6人</td>
-										<td rowspan="2"><button type="submit">加入</button></td>
-									</tr>
-									<tr>
-										<td>现有</td>
-										<td></td>
-									</tr>
-
-								</table>
-							</form>
-						</div>
-						<div class="col-md-3"
-							style="border: 1px solid red; height: 100px; margin-left: 20px">
-							<form action="joinGame">
-								<table>
-									<tr>
-										<td>可容纳</td>
-										<td>6人</td>
-										<td rowspan="2"><button type="submit">加入</button></td>
-									</tr>
-									<tr>
-										<td>现有</td>
-										<td></td>
-									</tr>
-
-								</table>
-							</form>
-						</div>
-						<div class="col-md-3"
-							style="border: 1px solid red; height: 100px; margin-left: 20px">
-							<form action="joinGame">
-								<table>
-									<tr>
-										<td>可容纳</td>
-										<td>6人</td>
-										<td rowspan="2"><button type="submit">加入</button></td>
-									</tr>
-									<tr>
-										<td>现有</td>
-										<td></td>
-									</tr>
-
-								</table>
-							</form>
-						</div>
-
-					</div>
-					<div class="form-group">
-						<div class="col-md-3"
-							style="border: 1px solid red; height: 100px; margin-left: 20px; margin-top: 20px">
-							<form action="joinGame">
-								<table>
-									<tr>
-										<td>可容纳</td>
-										<td>6人</td>
-										<td rowspan="2"><button type="submit">加入</button></td>
-									</tr>
-									<tr>
-										<td>现有</td>
-										<td></td>
-									</tr>
-
-								</table>
-							</form>
-						</div>
-						<div class="col-md-3"
-							style="border: 1px solid red; height: 100px; margin-left: 20px; margin-top: 20px">
-							<form action="joinGame">
-								<table>
-									<tr>
-										<td>可容纳</td>
-										<td>6人</td>
-										<td rowspan="2"><button type="submit">加入</button></td>
-									</tr>
-									<tr>
-										<td>现有</td>
-										<td></td>
-									</tr>
-
-								</table>
-							</form>
-						</div>
-						<div class="col-md-3"
-							style="border: 1px solid red; height: 100px; margin-left: 20px; margin-top: 20px">
-							<form action="joinGame">
-								<table>
-									<tr>
-										<td>可容纳</td>
-										<td>6人</td>
-										<td rowspan="2"><button type="submit">加入</button></td>
-									</tr>
-									<tr>
-										<td>现有</td>
-										<td></td>
-									</tr>
-
-								</table>
-							</form>
-						</div>
-
-					</div>
-					<div class="form-group">
-						<div class="col-md-3"
-							style="border: 1px solid red; height: 100px; margin-left: 20px; margin-top: 20px">
-							<form action="joinGame">
-								<table>
-									<tr>
-										<td>可容纳</td>
-										<td>6人</td>
-										<td rowspan="2"><button type="submit">加入</button></td>
-									</tr>
-									<tr>
-										<td>现有</td>
-										<td></td>
-									</tr>
-
-								</table>
-							</form>
-						</div>
-						<div class="col-md-3"
-							style="border: 1px solid red; height: 100px; margin-left: 20px; margin-top: 20px">
-							<form action="joinGame">
-								<table>
-									<tr>
-										<td>可容纳</td>
-										<td>6人</td>
-										<td rowspan="2"><button type="submit">加入</button></td>
-									</tr>
-									<tr>
-										<td>现有</td>
-										<td></td>
-									</tr>
-
-								</table>
-							</form>
-						</div>
-						<div class="col-md-3"
-							style="border: 1px solid red; height: 100px; margin-left: 20px; margin-top: 20px">
-							<form action="joinGame">
-								<table>
-									<tr>
-										<td>可容纳</td>
-										<td>6人</td>
-										<td rowspan="2"><button type="submit">加入</button></td>
-									</tr>
-									<tr>
-										<td>现有</td>
-										<td></td>
-									</tr>
-
-								</table>
-							</form>
-						</div>
-
-					</div>
-					<div class="form-group">
-						<div class="col-md-3"
-							style="border: 1px solid red; height: 100px; margin-left: 20px; margin-top: 20px">
-							<form action="joinGame">
-								<table>
-									<tr>
-										<td>可容纳</td>
-										<td>6人</td>
-										<td rowspan="2"><button type="submit">加入</button></td>
-									</tr>
-									<tr>
-										<td>现有</td>
-										<td></td>
-									</tr>
-
-								</table>
-							</form>
-						</div>
-						<div class="col-md-3"
-							style="border: 1px solid red; height: 100px; margin-left: 20px; margin-top: 20px">
-							<form action="joinGame">
-								<table>
-									<tr>
-										<td>可容纳</td>
-										<td>6人</td>
-										<td rowspan="2"><button type="submit">加入</button></td>
-									</tr>
-									<tr>
-										<td>现有</td>
-										<td></td>
-									</tr>
-
-								</table>
-							</form>
-						</div>
-						<div class="col-md-3"
-							style="border: 1px solid red; height: 100px; margin-left: 20px; margin-top: 20px">
-							<form action="joinGame">
-								<table>
-									<tr>
-										<td>可容纳</td>
-										<td>6人</td>
-										<td rowspan="2"><button type="submit">加入</button></td>
-									</tr>
-									<tr>
-										<td>现有</td>
-										<td></td>
-									</tr>
-
-								</table>
-							</form>
-						</div>
-
-					</div>
+				<div id="xs" class="xs">
+					
 
 				</div>
 			</div>
@@ -377,5 +161,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- Metis Menu Plugin JavaScript -->
 	<script src="js/metisMenu.min.js"></script>
 	<script src="js/custom.js"></script>
+	<script type="text/javascript">
+	setInterval("refresh()",3000);
+	
+	function test(){
+		$.ajax({
+			url:"addRoom",
+			type:"get",
+			dataType:"json",
+			success:function(){
+			alert("creat successs!");
+			},
+			error:function(){
+				alert("请求失败");
+				test();
+			}
+		})
+	}
+			function refresh()
+			{
+				$.ajax({
+					url:"refresh",
+					type:"get",
+					dataType:"json",
+					success:function(result){
+						alert(result.length);
+						$.each(result,function(index,iteam){
+							alert("1");
+							var d = document.creatElement("div");
+							d.style.cssText="width:100px;height:100px;background-color:red;"
+							document.getElementById("xs").appendChild(d);
+						})
+					},
+					error:function(){
+						alert("请求失败");
+						refresh();
+					}
+				})
+			}
+	
+	
+	
+	</script>
 </body>
 </html>

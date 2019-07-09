@@ -112,6 +112,13 @@ public class UserImpl implements IUserDao {
 	}
 
 
+	@Override
+	public List<User> query() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 	
 

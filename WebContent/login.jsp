@@ -47,7 +47,7 @@
 			<div class="avtar">
 				<img src="images/avtar.png" />
 			</div>
-			<form action="login" method="post">
+			<form action="join" method="post">
 				<input type="text" class="text" value="Username" autocomplete="off"  name="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
 				<div class="key">
 					<input type="password" value="Password" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
