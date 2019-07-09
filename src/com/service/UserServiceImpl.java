@@ -9,16 +9,6 @@ import com.model.User;
 public class UserServiceImpl implements IUserService{
 	IUserDao dao=new UserImpl();
 	
-	@Override
-	public void addUser(User user) {
-		dao.addUser(user);
-		
-	}
-	@Override
-	public List<User> query() {
-		return dao.query();
-	}
-	
 
 	@Override
 	public List<User> selectCloseUser() {
@@ -68,5 +58,9 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public List<User> pageSelectCloseUser(Integer nowpage, Integer pageCount) {
 		return dao.pageSelectCloseUser(nowpage, pageCount);
+	}
+	@Override
+	public void addUser(String username, String password) {
+		dao.addUser(username, password);
 	}
 }
