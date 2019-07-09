@@ -59,6 +59,11 @@ public class UserServiceImpl implements IUserService{
 	public List<User> pageSelectCloseUser(Integer nowpage, Integer pageCount) {
 		return dao.pageSelectCloseUser(nowpage, pageCount);
 	}
+	
+	public boolean login(String username, String password) {
+		return false;
+	}
+
 	@Override
 	public void addUser(String username, String password) {
 		dao.addUser(username, password);

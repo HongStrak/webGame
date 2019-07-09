@@ -168,30 +168,61 @@ body {
 </head>
 <body>
 
-	<div class="banner">
-		<div class="picture">游戏首页</div>
-		<div class="table">
-			<ul>
-				<li><a href="#">游戏资料</a></li>
-				<li><a href="#">角色信息</a></li>
-				<li><a href="#">充值购买</a></li>
-				<li><a href="#">游戏下载</a></li>
-			</ul>
-		</div>
-		
-		<div class="search">
-			<input class="kuang" type="text" name="name" /> <input class="btn"
-				type="button" value="战绩查询"  onclick="location.href='History.jsp'"  />
-		</div>
-		<div class="login">
+	<div class="container" >
+			<div class="row clearfix" >
+				<div class="col-md-12 column" style="background-color: aliceblue;">
+				
+					<nav class="navbar navbar-default" role="navigation" style="background-color: aliceblue; border: none;" >
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+							
+						</div>
 
-			<a href="#">注册</a>
-			
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<li >
+									<a href="#">游戏首页</a>
+								</li>
+								<li>
+									<a href="#">游戏资料</a>
+								</li>
+								<li>
+									<a href="#">角色信息</a>
+								</li>
+								<li>
+									<a href="#">充值购买</a>
+								</li>
+								<li>
+									<a href="#">游戏下载</a>
+								</li>
+								
+								
+							</ul>
+							<form class="navbar-form navbar-left" role="search">
+								<div class="form-group">
+									<input type="text" class="form-control" />
+								</div> <button type="submit" class="btn btn-default">Submit</button>
+							</form>
+							
+							<ul class="nav navbar-nav navbar-right">
+								<li>
+									<input  type="button" value="点击登录" onclick="showdiv();"
+		                            style="width: 90px; height: 30px; opacity: 0.8;margin-top: 10px;" />
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">注册</a>
+
+								</li>
+							
+							</ul>
+							
+								
+						</div>
+
+					</nav>
+				</div>
+			</div>
 		</div>
-	</div>
-	
-<input id="btnbegin" type="button" value="点击登录" onclick="showdiv();"
-		style="width: 80px; height: 40px; opacity: 0.8;" />
 	<div id="bg">
 
 		<div id="img">
@@ -208,10 +239,10 @@ body {
 
 
 		<div id="login">
-			<form action="joinG">
+			<form action="joinG" method="get">
 				账 号：<input type="text" name="username"
 					style="width: 150px; height: 30px;"> <br>
-				<br> 密 码：<input type="text" name="username"
+				<br> 密 码：<input type="text" name="password"
 					style="width: 150px; height: 30px;"> <br>
 				<br>
 				<br>
