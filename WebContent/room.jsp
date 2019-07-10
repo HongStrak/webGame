@@ -94,6 +94,7 @@
 	var h=document.documentElement.clientHeight;//可见区域高度
 	document.getElementsByClassName('total')[0].style.height = h + "px";
 	
+	setInterval("refresh()",1000);
 	
 	function refresh(){
 		$.ajax({
