@@ -163,7 +163,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/metisMenu.min.js"></script>
 	<script src="js/custom.js"></script>
 	<script type="text/javascript">
-	var name="default name";
+	var name="defaultName";
 	
 	setInterval("refresh()",1000);
 	draw();
@@ -193,7 +193,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							
 							var div = document.createElement("div");
 							div.setAttribute("class","room");
-							div.innerHTML="<a href='joinRoom?name="+name+"&RoomName="+iteam.rName+"'></a>";
+							div.innerHTML="<a href='joinRoom?name="+name+"&RoomName="+iteam.rName+"'>"+iteam.rName+"</a>";
 							div.style.cssText="float:left;width:200px;height:200px;margin-top:20px;margin-left:20px;background-color:green;";
 							if(iteam.isEnter==false){
 								div.style.cssText+="background-color:red;";
