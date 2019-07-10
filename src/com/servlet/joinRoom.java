@@ -2,27 +2,27 @@ package com.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.TreeMap;
-
+import com.Config.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.Config.*;
+
 import com.model.Tank;
-import com.model.*;
+import com.model.room;
+
 /**
- * Servlet implementation class addRoom
+ * Servlet implementation class joinRoom
  */
-@WebServlet("/addRoom")
-public class addRoom extends HttpServlet {
+@WebServlet("/joinRoom")
+public class joinRoom extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public addRoom() {
+    public joinRoom() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,14 +31,21 @@ public class addRoom extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");	
-		response.setCharacterEncoding("utf-8");	
-		
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		String RoomName = request.getParameter("RoomName");
 		String name = request.getParameter("name");
 		ArrayList<room> rl = config.rl;
-		room r = new room();
-		r.setrName(name);
-		rl.add(r);
+		ArrayList<Tank> tl = null;
+		for(room r:rl){
+			if(r.getrName().equals(RoomName)){
+				tl = r.getTl();
+			}
+		}
+		Tank t = new Tank();
+		t.setName(name);
+		tl.add(t);
+		request.getRequestDispatcher("room.jsp?RoomName="+RoomName).forward(request, response);
 	}
 
 	/**

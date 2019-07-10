@@ -163,15 +163,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/metisMenu.min.js"></script>
 	<script src="js/custom.js"></script>
 	<script type="text/javascript">
+	var name="default name";
+	
 	setInterval("refresh()",1000);
 	draw();
 	function addR(){
 		$.ajax({
 			url:"addRoom",
-/* 			type:"get",
-			dataType:"json", */
+			data:{'name':name},
 			success:function(){
-			alert("create room");
+				window.location.href = "room.jsp?RoomName="+name;
 			},
 			error:function(){
 				alert("fail");
@@ -189,9 +190,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 						id("xs").innerHTML="";
 						$.each(result,function(index,iteam){
+							
 							var div = document.createElement("div");
 							div.setAttribute("class","room");
-							div.style.cssText="float:left;width:100px;height:100px;margin-top:20px;margin-left:20px;background-color:green;";
+							div.innerHTML="<a href='joinRoom?name="+name+"&RoomName="+iteam.rName+"'></a>";
+							div.style.cssText="float:left;width:200px;height:200px;margin-top:20px;margin-left:20px;background-color:green;";
 							if(iteam.isEnter==false){
 								div.style.cssText+="background-color:red;";
 							}
