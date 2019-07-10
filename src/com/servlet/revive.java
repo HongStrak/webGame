@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Config.config;
 import com.model.Tank;
+import com.model.room;
 import com.service.JsonUtils;
 
 /**
@@ -35,10 +36,17 @@ public class revive extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		String  name = request.getParameter("name");
-
+		
+		ArrayList<Tank> tl = null;
+		String name = request.getParameter("name");
+		String RoomName = request.getParameter("RoomName");
+		ArrayList<room> rl = config.rl;
+		for(room r:rl){
+			if(r.getrName().equals(RoomName)){
+				tl = r.getTl();
+			}
+		}
 //		response.getWriter().print(name+"you death");
-		ArrayList<Tank> tl = config.tl;
 		for(Tank t:tl){
 			if(t.getName().equals(name)){
 				t.setHp(100);

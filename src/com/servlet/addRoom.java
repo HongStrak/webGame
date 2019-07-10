@@ -38,10 +38,11 @@ public class addRoom extends HttpServlet {
 		ArrayList<room> rl = config.rl;
 		room r = new room();
 		r.setrName(name);
-		ArrayList<Tank> tl = r.getTl();
+		ArrayList<Tank> tl = new ArrayList<Tank>();
 		Tank t = new Tank();
 		t.setName(name);
 		tl.add(t);
+		r.setTl(tl);
 		rl.add(r);
 	}
 

@@ -15,6 +15,7 @@
 <script type="text/javascript" src="js/draw.js"></script>
 
 <script>
+
 var time=5;
 var rangeLen=200;
 var rangeAng=60;
@@ -37,6 +38,7 @@ var pointY;
 </head>
 <body>
 <input id="name" type="hidden" value="${name}">
+<input id="RoomName" type="hidden" value="${RoomName}">
 <div id="main" onmousemove="point(event)" onmousedown="move(event)">
 
 
@@ -56,6 +58,7 @@ var pointY;
 </body>
 
 <script type="text/javascript" >
+var RoomName=id("RoomName").value;
 var sp = id("sp");
 
 var me = document.getElementById("me");
@@ -100,7 +103,7 @@ function draw(){
 	$.ajax({
 		url:"ctrl",
 		type:"get",
-		data:{'name':name,
+		data:{'name':name,'RoomName':RoomName,
 			'y':y,'x':x},
 		dataType:"json",
 /* 		traditional: true, */
@@ -121,7 +124,7 @@ id("main").onclick=function(){
 			$.ajax({
 				url:"ByShoot",
 				type:"get",
-				data:{'attack':attack,'name':iteam.getAttribute("id")},
+				data:{'attack':attack,'name':iteam.getAttribute("id"),'RoomName':RoomName},
 				dataType:"json",
 				success:function(result){
 					

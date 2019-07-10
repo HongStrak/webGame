@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.Tank;
+import com.model.room;
 import com.service.JsonUtils;
 import com.Config.*;
 /**
@@ -33,8 +34,17 @@ public class ctrl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		ArrayList<Tank> tl = config.tl;
+		ArrayList<Tank> tl = null;
 		String name = request.getParameter("name");
+		String RoomName = request.getParameter("RoomName");
+		System.out.println(name);
+		ArrayList<room> rl = config.rl;
+		for(room r:rl){
+			if(r.getrName().equals(RoomName)){
+				tl = r.getTl();
+			}
+		}
+		
 		String x = request.getParameter("x");
 		String y = request.getParameter("y");
 		

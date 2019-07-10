@@ -16,6 +16,7 @@
 <script src="javaex/pc/js/javaex.min.js"></script>
 <script src="javaex/pc/js/javaex-formVerify.js"></script>
 <script src="js/jquery-2.2.3.min.js"></script>
+<script src="js/draw.js"></script>
 
 <style type="text/css">
 	.emp{
@@ -59,29 +60,31 @@
 			<button class="button  radius-10 left room" >房间名:${param.RoomName }</button>
 		</div>
 		<div class="emp 1" style="background-color:darkgoldenrod">
-		<!--	<input class="user" type="text" />-->${param.RoomName }
+		<div class="player"></div>
 		</div>
 		<div class="emp 2"  style="background-color:blueviolet">
-			
+			<div class="player"></div>
 		</div>
 		<div class="emp 3"  style="background-color:blanchedalmond">
-			
+			<div class="player"></div>
 		</div>
 	</div>
 	<div style="height:100%;background-color:#ffdd57; ">
 		<div style="height: 25%; "></div>
 		<div class="emp 4"  style="background-color:darkgoldenrod">
-			
+			<div class="player"></div>
 		</div>
 		<div class="emp 5"  style="background-color:blueviolet">
-			
+			<div class="player"></div>
 		</div>
 		<div class="emp 6"  style="background-color:blanchedalmond">
-			
+			<div class="player"></div>
 		</div>
 		
 		<div style="margin-top: 10%;">
-			<button class="button blue radius-10 right prepare" >准备</button>
+			<button class="button blue radius-10 right prepare" >
+			<a href="joinG?name=${param.name}&RoomName=${param.RoomName}">play</a>
+			</button>
 		</div>
 		
 	</div>
@@ -91,6 +94,13 @@
 </body>
 
 <script>
+history.pushState(null, null, document.URL);
+//禁用浏览器的后退功能
+	window.addEventListener('popstate', function () {
+	    history.pushState(null, null, document.URL);
+	});
+	var name = "${param.name}";
+
 	var h=document.documentElement.clientHeight;//可见区域高度
 	document.getElementsByClassName('total')[0].style.height = h + "px";
 	
@@ -104,9 +114,8 @@
 			dataType:"json",
 			success:function(result){
 				console.log(result);
-				$.each(result,function(index,item){
-				//	alert(item);
-					//item.name;
+				$.each(result,function(index,iteam){
+				clz("player")[index].innerHTML=iteam.name;
 				})
 			},
 			error:function(){
@@ -115,8 +124,6 @@
 		})
 	};
 	
-	$(function(){
-		
-	})
+
 </script>
 </html>

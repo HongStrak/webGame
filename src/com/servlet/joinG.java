@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.Config.config;
 import com.model.Tank;
 import com.model.User;
+import com.model.room;
 import com.util.JdbcUtil;
 
 /**
@@ -34,12 +35,24 @@ public class joinG extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-				String name = request.getParameter("username");
-				ArrayList<Tank> tl = config.tl;
+				request.setCharacterEncoding("utf-8");
+				response.setCharacterEncoding("utf-8");
+		
+				String name = request.getParameter("name");
+				String RoomName = request.getParameter("RoomName");
+				ArrayList<room> rl = config.rl;
+				ArrayList<Tank> tl = null;
+				for(room r:rl){
+					if(r.getrName().equals(RoomName)){
+						tl = r.getTl();
+					}
+					
+				}
+				
 				Tank t = new Tank();
 				t.setName(name);
 				tl.add(t);
+				request.setAttribute("RoomName", RoomName);
 				request.setAttribute("name", name);
 				request.getRequestDispatcher("main.jsp").forward(request, response);
 			

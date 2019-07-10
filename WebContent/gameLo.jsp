@@ -135,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="#"><i class="fa fa-laptop nav_icon"></i>游戏大厅<span
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-
+							<li><input type="text" id="in"></li>
 								<li><a href="#" onclick="addR()">新建房间</a></li>
 								<li><a href="#">快速加入</a></li>
 							</ul></li>
@@ -145,6 +145,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- /.sidebar-collapse -->
 			</div>
 			<!-- /.navbar-static-side -->
+			
 		</nav>
 		<div id="page-wrapper">
 			<div class="col-md-12">
@@ -163,16 +164,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/metisMenu.min.js"></script>
 	<script src="js/custom.js"></script>
 	<script type="text/javascript">
-	var name="defaultName";
+	var name;
 	
 	setInterval("refresh()",1000);
-	draw();
 	function addR(){
+		name=id("in").value;
 		$.ajax({
 			url:"addRoom",
 			data:{'name':name},
 			success:function(){
-				window.location.href = "room.jsp?RoomName="+name;
+				window.location.href = "room.jsp?RoomName="+name+"&name="+name;
 			},
 			error:function(){
 				alert("fail");
@@ -181,7 +182,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	}
 			function refresh()
 			{
-				
+				name=id("in").value;
 				$.ajax({
 					url:"refresh",
 					type:"get",

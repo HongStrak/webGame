@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Config.config;
 import com.model.Tank;
+import com.model.room;
 import com.service.JsonUtils;
 
 /**
@@ -37,8 +38,15 @@ public class ByShoot extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		
 		
-		ArrayList<Tank> tl = config.tl;
+		ArrayList<Tank> tl = null;
 		String name = request.getParameter("name");
+		String RoomName = request.getParameter("RoomName");
+		ArrayList<room> rl = config.rl;
+		for(room r:rl){
+			if(r.getrName().equals(RoomName)){
+				tl = r.getTl();
+			}
+		}
 		int attack = 0;
 		try {
 			attack = Integer.parseInt(request.getParameter("attack"));

@@ -213,7 +213,7 @@ function revive(){
 		id("death").style.top="800px";
 		clearInterval(reid);
 		reid = null;
-		$.ajax({url:"revive",data:{'name':name},success:function(result){
+		$.ajax({url:"revive",data:{'name':name,'RoomName':RoomName},success:function(result){
 		time=5;
 		alive=true;
 	},

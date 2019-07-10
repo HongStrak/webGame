@@ -45,7 +45,7 @@ public class joinRoom extends HttpServlet {
 		Tank t = new Tank();
 		t.setName(name);
 		tl.add(t);
-		request.getRequestDispatcher("room.jsp?RoomName="+RoomName).forward(request, response);
+		request.getRequestDispatcher("room.jsp?RoomName="+RoomName+"&name="+name).forward(request, response);
 	}
 
 	/**
