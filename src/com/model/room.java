@@ -6,6 +6,12 @@ public class room {
 	private String rName;
 	private boolean isEnter=true;
 	private ArrayList<Tank> tl = new ArrayList<Tank>();
+	public ArrayList<Tank> getTl() {
+		return tl;
+	}
+	public void setTl(ArrayList<Tank> tl) {
+		this.tl = tl;
+	}
 	public String getrName() {
 		return rName;
 	}
