@@ -59,6 +59,7 @@
 	// 监听点击保存按钮事件
 	$("#submit").click(function() {
 		// 表单验证函数
+		
 		if (javaexVerify()) {
 			// 返回错误信息时，可以添加自定义异常提示。参数为元素id和提示
 			// addErrorMsg("username", "用户名不存在");
@@ -67,9 +68,9 @@
 			
 			 $.ajax({
 	            //几个参数需要注意一下
-                type: "POST",//方法类型
+	            url: "/emp?act=login",//url
+                type: "get",//方法类型
                 dataType:"text",//预期服务器返回的数据类型
-                url: "/emp" ,//url
                 data:$('#login').serialize(),
                 success:function (result) {
                     console.log(result);//打印服务端返回的数据(调试用)

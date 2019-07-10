@@ -1,7 +1,7 @@
 //如果一个js里面有一个方法写错了，整个js不能用
-//function draw(){
-//	alert("success!");
-//}
+function draw(){
+	alert("success!");
+}
 function sin(value){
 	return Math.sin(value/180*3.1415926);
 }
@@ -88,8 +88,8 @@ return c;
 }
 function xyToAngle(x0,y0,x1,y1){
 	var b = (y0-y1)/(x1-x0);
-	angle = atan(b);
-if(b<0){
+	var angle = atan(b);
+	if(b<0){
 		angle+=360;
 }
 	if((y0-y1)>0&&(x1-x0)<0){
@@ -101,12 +101,16 @@ if(b<0){
 	angle = formatAn(angle);
 	return angle;
 }
-function isByShoot(oth){
+function isByShoot(oth,angle){
+	angle = formatAn(angle);
+	
 	var xo = int(oth.getAttribute("x"));
 	var yo = int(oth.getAttribute("y"));
-	var distance = sqrt(sq(x-xo)+sq(y-yo));
-	var disAn = xyToAngle(x,y,xo,yo);
-	if(distance<rangeLen&&formatAn(disAn-angle)<rangeAng){
+	var x1=x+40;
+	var y1=y+40;
+	var distance = sqrt(sq(x1-xo)+sq(y1-yo));
+	var disAn = xyToAngle(x1,y1,xo,yo);
+	if(distance<rangeLen&&(formatAn(disAn-angle)<rangeAng/2||formatAn(disAn-angle)>(360-rangeAng/2))){
 		return true;
 	}else{
 		return false;
@@ -129,23 +133,100 @@ function whoByShoot(){
 function cstyle(id,style){
 	id.style.cssText+=style;
 }
-function myjson(url,data){
+function moveX(){
+	var dis = cos(targetAn)*speed;
+	x+=dis;
+	me.style.left=x+"px";
+}
+function moveY(){
+	var dis = sin(targetAn)*speed;
+	y-=dis;
 	
-	$.ajax({
-		url:url,
-		type:"get",
-		data:{data},
-		dataType:"json",
-/* 		traditional: true, */
-		success:function(result){
-			alert(result[0].name);
-		},
-		error:function(){
-			/* alert("请求失败"); */
-			myjson(url,data);
+	me.style.top=y+"px";
+}
+function abval(val){
+	if(val<0){
+		val=-val;
+	}
+	return val;
+}
+//处理返回结果
+function handle(result){
+	$.each(result,function(index,iteam){
+		if(iteam.name!=name){
+			othHandle(iteam);
+		}else{
+			meHandle(iteam);
 		}
 	})
 }
+
+//处理自己
+function meHandle(iteam){
+	me.setAttribute("hp",iteam.hp);
+	me.innerHTML=iteam.name+":"+iteam.hp;
+	if(iteam.hp<=0){
+		
+		if(reid==null){
+			alive=false;
+			death();
+		}
+		
+	}
+}
+
+//oth处理
+function othHandle(iteam){
+	var oth = id(iteam.name);
+	if(iteam.hp<=0){
+		oth.remove();
+	}else{
+		if(oth==null){
+			oth = document.createElement("div");
+			oth.setAttribute("id",iteam.name);
+			oth.setAttribute("class","other");
+			oth.setAttribute("x",iteam.x+40);
+			oth.setAttribute("y",iteam.y+40);
+			oth.setAttribute("hp",iteam.hp);
+			main.appendChild(oth);
+			oth.innerHTML=iteam.name+":"+iteam.hp;
+		}else{
+			oth.setAttribute("hp",iteam.hp);
+			oth.setAttribute("x",int(iteam.x)+40);
+			oth.setAttribute("y",int(iteam.y)+40);
+			oth.style.top=iteam.y+"px";
+			oth.style.left=iteam.x+"px";
+			oth.innerHTML=iteam.name+":"+iteam.hp;
+		}
+	}
+}
+function death(){
+	id("death").style.top="0px";
+	reid = setInterval("revive()",1000);
+	
+}
+function revive(){
+	id("timeo").value=time--;
+
+	
+	if(time<=0){
+		id("death").style.top="800px";
+		clearInterval(reid);
+		reid = null;
+		$.ajax({url:"revive",data:{'name':name},success:function(result){
+		time=5;
+		alive=true;
+	},
+	error:function(){
+		/* alert("请求失败"); */
+		revive();
+	}});
+	}
+	
+	
+
+}
+
 
 
 

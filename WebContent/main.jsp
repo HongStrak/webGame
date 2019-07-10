@@ -15,59 +15,81 @@
 <script type="text/javascript" src="js/draw.js"></script>
 
 <script>
+var time=5;
 var rangeLen=200;
 var rangeAng=60;
+var attack=10;
+var speed=2;
+var y=0;
+var x=0;
+var targetX=x;
+var targetY=y;
+var targetAn=0;
+var centerY=y+40;
+var centerX=x+40;
+var alive=true;
+var angle=0;
+var volume=40;    //等于R 半径
+
+var pointX;
+var pointY;
 </script>
 </head>
 <body>
 <input id="name" type="hidden" value="${name}">
-<div id="main" onmousemove="point(event)" >
+<div id="main" onmousemove="point(event)" onmousedown="move(event)">
 
 
 <div id="me">
 
 </div>
 <div id="sp"></div>
+<div id="death"><div id="time"><font size="4" color="green">复活倒计时：</font>
+<br>
+<input type="text" id="timeo">
+</div></div>
 </div>
 
 
 
-<input type="button" onclick="ByShoot()" value="shoot"> 
+
 </body>
 
 <script type="text/javascript" >
+var sp = id("sp");
+
 var me = document.getElementById("me");
 var name = document.getElementById("name").value;
 var main = document.getElementById("main");
-var y=0;
-var x=0;
+main.oncontextmenu=function(){return false}; 
 
 var sid = setInterval("draw()", 20);
+var mid = setInterval("movexy()", 20);
+var reid = null;
 me.style.top=y+"px";
 me.style.left=x+"px";
-me.innerHTML=name;
-document.onkeypress=function(e){
-	var code = e.keyCode;
-	var s = String.fromCharCode(code);
-	switch(s){
-	case 'd':
-		x=x+10;
-		me.style.left=x+"px";
-		break;
-	case 'w':
-		y-=10;
-		me.style.top=y+"px";
-		break;
-	case 'a':
-		x-=10;
-		me.style.left=x+"px";
-		break;
-	case 's':
-		y+=10;
-		me.style.top=y+"px";
-		break;
+/* sp.style.top=(y-40)+"px";
+sp.style.left=x+"px"; */
+
+
+function move(event){
+	var btnNum = event.button;
+	if(btnNum==2){
+		targetX=pointX-volume;
+		targetY=pointY-volume;
+		targetAn = xyToAngle(x,y,targetX,targetY);
 	}
-	point(event);
+}
+function movexy(){
+	if(abval(targetX-x)>2){
+		moveX();
+	}
+	if(abval(targetY-y)>2){
+		moveY();
+	}
+	sp.style.transform="rotateZ(-"+angle+"deg)";
+	sp.style.top=y+"px";
+	sp.style.left=(x+volume)+"px";
 }
 
 function draw(){
@@ -83,27 +105,7 @@ function draw(){
 		dataType:"json",
 /* 		traditional: true, */
 		success:function(result){
-			$.each(result,function(index,iteam){
-				if(iteam.name!=name){
-					var oth = document.getElementById(iteam.name);
-					if(oth==null){
-						oth = document.createElement("div");
-						oth.setAttribute("id",iteam.name);
-						oth.setAttribute("class","other");
-						oth.setAttribute("x",iteam.x+40);
-						oth.setAttribute("y",iteam.y+40);
-						oth.setAttribute("hp",iteam.hp);
-						main.appendChild(oth);
-						oth.innerHTML=iteam.name;
-					}else{
-						oth.setAttribute("x",iteam.x);
-						oth.setAttribute("y",iteam.y);
-						oth.style.top=iteam.y+"px";
-						oth.style.left=iteam.x+"px";
-					}
-					
-				}
-			})
+			handle(result);
 		},
 		error:function(){
 			/* alert("请求失败"); */
@@ -112,36 +114,38 @@ function draw(){
 	})
 }
 id("main").onclick=function(){
-	myjson("ByShoot",);
+	
+	$.each(clz("other"),function(index,iteam){
+		if(isByShoot(iteam,angle)&&alive){
+			
+			$.ajax({
+				url:"ByShoot",
+				type:"get",
+				data:{'attack':attack,'name':iteam.getAttribute("id")},
+				dataType:"json",
+				success:function(result){
+					
+				},
+				error:function(){
+					 alert("请求失败");
+					
+				}
+			})
+		}
+	});
+	
 }
 
-var pointX;
-var pointY;
-var centerY;
-var centerX ;
-var b ;
-var angle=0;
-var sp = id("sp");
+
+
+
 sp.appendChild(drawSector(0,40,200,60));
 function point(e){
-			centerX=x+40;
-			centerY=y+50;
-			pointX=e.clientX;
-			pointY=e.clientY;
-			b=(centerY-pointY)/(pointX-centerX);
-			
-			angle = ((Math.atan(b))*180/3.1415926);
-			if(b<0){
-				angle+=360;	
-			}if((centerY-pointY)>0&&(pointX-centerX)<0){
-				angle+=180;
-			}
-			if((centerY-pointY)<0&&(pointX-centerX)<0){
-				angle+=180;
-			}
-			sp.style.transform="rotateZ(-"+angle+"deg)";
-			sp.style.top=y+"px";
-			sp.style.left=(x+40)+"px";
+centerX=x+40;
+centerY=y+40; 
+pointX=e.clientX-(document.body.clientWidth-1366)/2;
+pointY=e.clientY;
+angle=xyToAngle(centerX,centerY,pointX,pointY);
 }
 
 

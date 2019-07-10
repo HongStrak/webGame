@@ -33,6 +33,7 @@ public class HisServlet extends BaseServlet {
 					+ "where t2.num>"+(cp-1)*pz+"and  1=1 ";
 			if(heroname!=null && !heroname.equals("")){
 				sql=" select * from heroname where heroname=? ";
+
 			} 
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			if(heroname!=null && !heroname.equals("")){

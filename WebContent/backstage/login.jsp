@@ -27,6 +27,7 @@
 <div class="bg-wrap">
 	<div class="main-cont-wrap login-model">
 		<form id="form" method="post" action="../emp">
+			<input type="hidden" name="act" value="login2" />
 			<div class="form-title">
 				<span>后台登录</span>
 			</div>
@@ -39,13 +40,11 @@
 				<input type="password" class="form-input original" name="password" placeholder="请输入密码" data-type="必填" error-pos="30" />
 			</div>
 			<div class="form-btn">
-				<input type="submit" class="ui-button" id="save" value="登录" />
+				<input type="submit" class="ui-button" value="登录" />
 			</div>
 		</form>
 	</div>
 </div>
 </body>
-
-	
 
 </html>

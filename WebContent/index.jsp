@@ -2,75 +2,65 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 	<head>
-		<meta charset="UTF-8">
 		<title>登陆页面</title>
-		<link rel="stylesheet" href="css/style.css" type="text/css" 
-			media="all"/>
-		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css"/>
-		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-		<script type="text/javascript" src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="application/x-javascript">
+			addEventListener("load", function() {
+				setTimeout(hideURLbar, 0);
+			}, false);
+
+			function hideURLbar() {
+				window.scrollTo(0, 1);
+			}
+		</script>
+		<meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
+		<link href="css/style.css" rel='stylesheet' type='text/css' />
+		<!--webfonts-->
+		<link href='http://fonts.useso.com/css?family=PT+Sans:400,700,400italic,700italic|Oswald:400,300,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.useso.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
+		<!--//webfonts-->
+		<script src="http://ajax.useso.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	</head>
+
 	<body>
-		<div class="container">
-			<div class="row clearfix">
-		<div class="col-md-12 column">
-			<ul class="nav nav-pills">
-				<li class="active">
-					 <a href="#">首页</a>
-				</li>
-				<li>
-					 <a href="#">登陆</a>
-				</li>
-				<li>
-					 <a href="signup.jsp">注册</a>
-				</li>
-				<li class="dropdown pull-right">
-					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">忘记密码？<strong class="caret"></strong></a>
-					<ul class="dropdown-menu">
-						<li>
-							 <a href="#">重新注册</a>
-						</li>
-						<li>
-							 <a href="#">找回密码</a>
-						</li>
-			
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="row clearfix" style="margin-top:20px">
-		<div class="col-md-12 column">
-			<form class="form-horizontal" role="form" action="join" method="post">
-				<div class="form-group">
-					 <label for="username" class="col-sm-2 control-label">Username</label>
-					<div class="col-sm-4">
-						<input type="text" name="rid" class="form-control" id="username" />
-					</div>
+		<script>
+			$(document).ready(function(c) {
+				$('.close').on('click', function(c) {
+					$('.login-form').fadeOut('slow', function(c) {
+						$('.login-form').remove();
+					});
+				});
+			});
+		</script>
+		<!--SIGN UP-->
+		<h1>Welcome to library</h1>
+		<div class="login-form">
+			<div class="close"> </div>
+			<div class="head-info">
+				<label class="lbl-1"></label>
+				<label class="lbl-2"> </label>
+				<label class="lbl-3"> </label>
+			</div>
+			<div class="clear"> </div>
+			<div class="avtar">
+				<img src="images/avtar.png" />
+			</div>
+			<form action="login" method="post">
+				<input type="text" class="text" value="Username" autocomplete="off"  name="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
+				<div class="key">
+					<input type="password" value="Password" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 				</div>
-				<div class="form-group">
-					 <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-					<div class="col-sm-4">
-						<input type="password"  name="password" class="form-control" id="inputPassword3" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<div class="checkbox">
-							 <label><input type="checkbox" />Remember me</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						 <button type="submit" class="btn btn-default">Sign in</button>
-					</div>
-				</div>
+				<div class="signin">
+				<input type="submit" value="Login">
+			    </div>
 			</form>
+			
 		</div>
-	</div>
-</div>	
+		
+
 	</body>
+
 </html>
+    

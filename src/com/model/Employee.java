@@ -5,8 +5,11 @@ package com.model;
  * @author 26312
  */
 public class Employee {
-	private Integer id;
+	/**序号*/
+	private Integer id; 
+	/**账号*/
 	private String username;
+	/**密码*/
 	private String password;
 
 	public Employee() {

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/backstage/head/head.jsp" %>
@@ -33,8 +33,9 @@
 				<li class="menus">
 					<a href="javascript:;">用户管理</a>
 					<ul class="menu">
-						<li><a href="javascript:;">用户信息</a></li>
+						<li><a href="javascript:page('/backstage/user/user.jsp');">用户信息</a></li>
 						<li><a href="javascript:;">战绩管理</a></li>
+						<li><a href="javascript:page('/backstage/user/cday.jsp');">封号管理</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -56,7 +57,12 @@
 	
 	// 控制页面载入
 	function page(url) {
-		$("#page").attr("src", url);
+		var loginname = "${loginname }";
+		if(loginname != null && loginname != ""){
+			$("#page").attr("src", url);
+		}else{
+			window.location.href="login.jsp";
+		}
 	};
 	
 	// 菜单保持高亮

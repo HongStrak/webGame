@@ -36,8 +36,24 @@ public class ByShoot extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		String str = request.getParameter("tt");
-		ArrayList tl = config.tl;
+		
+		ArrayList<Tank> tl = config.tl;
+		String name = request.getParameter("name");
+		int attack = 0;
+		try {
+			attack = Integer.parseInt(request.getParameter("attack"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		for(Tank t:tl){
+			if(t.getName().equals(name)){
+				
+				t.setHp((t.getHp()-attack));
+				
+			}
+		}
+		
 		String json = JsonUtils.objectToJson(tl);
 		response.getWriter().print(json);
 	}

@@ -1,26 +1,15 @@
 package com.Config;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import com.model.Tank;
+import com.model.room;
 
 public class config {
-	public static ArrayList<Tank> tl = new ArrayList<Tank>();
+	public static ArrayList<room> rl = new ArrayList<room>();
 
-
-	public static void update(String name,String x,String y){
-		for(int i=0;i<tl.size();i++){
-			Tank t = tl.get(i);
-			if(t.getName().equals(name)){
-				tl.remove(t);
-			}
-		}
-		
-		Tank nt = new Tank();
-		nt.setX(x);
-		nt.setY(y);
-		nt.setName(name);
-		tl.add(nt);
-	}
+    
+	
 }
