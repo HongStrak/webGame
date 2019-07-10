@@ -5,12 +5,11 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import com.model.Tank;
+import com.model.room;
 
 public class config {
-	public static ArrayList<Tank> tl = new ArrayList<Tank>();
-	public static Map room=new TreeMap();
-   
-    
+	public static ArrayList<room> rl = new ArrayList<room>();
+
     
 	
 }

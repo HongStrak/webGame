@@ -1,7 +1,7 @@
 //如果一个js里面有一个方法写错了，整个js不能用
-//function draw(){
-//	alert("success!");
-//}
+function draw(){
+	alert("success!");
+}
 function sin(value){
 	return Math.sin(value/180*3.1415926);
 }

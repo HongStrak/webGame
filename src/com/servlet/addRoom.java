@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.Config.*;
 import com.model.Tank;
-
+import com.model.*;
 /**
  * Servlet implementation class addRoom
  */
@@ -33,10 +33,10 @@ public class addRoom extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");	
 		response.setCharacterEncoding("utf-8");	
-		ArrayList tl = config.tl;
-		tl.add(new Tank());
-		System.out.println(tl.size());
-//		t.put("username", config.tl);
+		ArrayList<room> rl = config.rl;
+		room r = new room();
+		r.setrName("default room");
+		rl.add(r);
 	}
 
 	/**

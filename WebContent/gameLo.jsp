@@ -19,6 +19,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="css/font-awesome.css" rel="stylesheet">
 <!-- jQuery -->
 <script src="js/jquery.min.js"></script>
+<script src="js/draw.js"></script>
 <!----webfonts--->
 <link
 	href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900'
@@ -135,7 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
 
-								<li><a href="#" onclick="test()">新建房间</a></li>
+								<li><a href="#" onclick="addR()">新建房间</a></li>
 								<li><a href="#">快速加入</a></li>
 							</ul></li>
 						<li>
@@ -146,8 +147,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- /.navbar-static-side -->
 		</nav>
 		<div id="page-wrapper">
-			<div class="col-md-12 graphs">
-				<div id="xs" class="xs">
+			<div class="col-md-12">
+				<div id="xs" >
 					
 
 				</div>
@@ -162,39 +163,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/metisMenu.min.js"></script>
 	<script src="js/custom.js"></script>
 	<script type="text/javascript">
-	setInterval("refresh()",3000);
-	
-	function test(){
+	setInterval("refresh()",1000);
+	draw();
+	function addR(){
 		$.ajax({
 			url:"addRoom",
-			type:"get",
-			dataType:"json",
+/* 			type:"get",
+			dataType:"json", */
 			success:function(){
-			alert("creat successs!");
+			alert("create room");
 			},
 			error:function(){
-				alert("请求失败");
-				test();
+				alert("fail");
 			}
 		})
 	}
 			function refresh()
 			{
+				
 				$.ajax({
 					url:"refresh",
 					type:"get",
 					dataType:"json",
 					success:function(result){
-						alert(result.length);
+						
+						id("xs").innerHTML="";
 						$.each(result,function(index,iteam){
-							alert("1");
-							var d = document.creatElement("div");
-							d.style.cssText="width:100px;height:100px;background-color:red;"
-							document.getElementById("xs").appendChild(d);
-						})
+							var div = document.createElement("div");
+							div.setAttribute("class","room");
+							div.style.cssText="float:left;width:100px;height:100px;margin-top:20px;margin-left:20px;background-color:green;";
+							if(iteam.isEnter==false){
+								div.style.cssText+="background-color:red;";
+							}
+							id("xs").appendChild(div);
+						});
 					},
 					error:function(){
-						alert("请求失败");
+					//	alert("刷新请求失败");
 						refresh();
 					}
 				})

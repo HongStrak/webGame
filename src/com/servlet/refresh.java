@@ -33,9 +33,11 @@ public class refresh extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		ArrayList tl = config.tl;
-		String json = JsonUtils.objectToJson(tl);
+		
+		
+		String json = JsonUtils.objectToJson(config.rl);
 		response.getWriter().print(json);
+
 	}
 
 	/**
