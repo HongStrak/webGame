@@ -294,9 +294,9 @@
 			</div>
 			<div class="banner-img">
 
-				<img class="img" src="images/2.png" />
-				<img class="img" src="images/3.png" />
-				<img class="img" src="images/4.png" />
+				<img class="img" src="images/2.PNG" />
+				<img class="img" src="images/3.PNG" />
+				<img class="img" src="images/4.PNG" />
 
 			</div>
 		</div>
@@ -304,7 +304,7 @@
 			<div class="blogs">
 				<div class="mt20">我的关注</div>
 
-				<li> <span class="blogpic"><a ><img src="images/5.png"></a></span>
+				<li> <span class="blogpic"><a ><img src="images/6.png"></a></span>
 					<h3 class="blogtitle"><a >速看！云顶之弈装备合成公式一览</a></h3>
 
 					<div class="autor"><span class="essay">文章</span><span>德邦情报局</span><span class="readmore"><a >9428阅读</a>&nbsp;&nbsp;<a >  1小时前</<a></span></div>
