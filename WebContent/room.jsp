@@ -58,25 +58,25 @@
 		<div style="height: 25%;">
 			<button class="button  radius-10 left room" >房间名:${param.RoomName }</button>
 		</div>
-		<div class="emp" style="background-color:darkgoldenrod">
+		<div class="emp 1" style="background-color:darkgoldenrod">
 		<!--	<input class="user" type="text" />-->${param.RoomName }
 		</div>
-		<div class="emp"  style="background-color:blueviolet">
+		<div class="emp 2"  style="background-color:blueviolet">
 			
 		</div>
-		<div class="emp"  style="background-color:blanchedalmond">
+		<div class="emp 3"  style="background-color:blanchedalmond">
 			
 		</div>
 	</div>
 	<div style="height:100%;background-color:#ffdd57; ">
 		<div style="height: 25%; "></div>
-		<div class="emp"  style="background-color:darkgoldenrod">
+		<div class="emp 4"  style="background-color:darkgoldenrod">
 			
 		</div>
-		<div class="emp"  style="background-color:blueviolet">
+		<div class="emp 5"  style="background-color:blueviolet">
 			
 		</div>
-		<div class="emp"  style="background-color:blanchedalmond">
+		<div class="emp 6"  style="background-color:blanchedalmond">
 			
 		</div>
 		
@@ -103,8 +103,10 @@
 			data:{"roomName":"${param.RoomName }" },
 			dataType:"json",
 			success:function(result){
+				console.log(result);
 				$.each(result,function(index,item){
-					alert(item);
+				//	alert(item);
+					//item.name;
 				})
 			},
 			error:function(){
