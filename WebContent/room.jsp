@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,13 +47,19 @@
 	}
 </style>
 <body>
+
+<%-- <%
+	String roomName = request.getParameter("RoomName");
+	request.setAttribute("RoomName", roomName);
+%> --%>
+
 <div class="grid-1-1 total" >
 	<div style=" height:100%;background-color:#00d1b2; 	text-align: center;">
 		<div style="height: 25%;">
-			<button class="button  radius-10 left room" >房间名:${RoomName }</button>
+			<button class="button  radius-10 left room" >房间名:${param.RoomName }</button>
 		</div>
 		<div class="emp" style="background-color:darkgoldenrod">
-		<!--	<input class="user" type="text" />-->${RoomName }
+		<!--	<input class="user" type="text" />-->${param.RoomName }
 		</div>
 		<div class="emp"  style="background-color:blueviolet">
 			
@@ -92,7 +99,7 @@
 		$.ajax({
 			url:"room?act=refresh",
 			type:"post",
-			data:{"roomName":"${RoomName }" },
+			data:{"roomName":"${param.RoomName }" },
 			dataType:"json",
 			success:function(result){
 				$.each(result,function(index,item){
