@@ -113,9 +113,13 @@ public class UserImpl implements IUserDao {
 
 
 	@Override
-	public List<User> query() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> query(String username) {
+		String sql="select * from tb_user where username=?";
+		List<Object> params=new ArrayList<Object>();
+		JdbcUtil jdbc=new JdbcUtil();
+		List<User> user=jdbc.queryPreparedStatement(sql, params, User.class);
+		jdbc.close();
+		return user;
 	}
 
 
