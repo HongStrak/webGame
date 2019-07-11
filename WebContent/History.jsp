@@ -12,16 +12,16 @@
 		<script type="text/javascript" src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation">
-	<div class="navbar-header">
+<nav class="navbar navbar-default" role="navigation" style="background-color:pink">
+	<div class="navbar-header" style="margin-left:20%">
 		 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> 
 		 <a class="navbar-brand" href="#">历史战绩查询</a>
 	</div>
 	
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
 		<ul class="nav navbar-nav">
 			<li>
-				 <a href="#">首页</a>
+				 <a href="first.jsp">首页</a>
 			</li>
 			
 			
@@ -40,15 +40,19 @@
 				<div class="col-md-12 column">					
 					<table class="table">
 						<thead>
+							
+							<c:choose>
+							<c:when test="${historys ne null}">
 							<tr>
 								<th>英雄编号</th>
 								<th>英雄姓名</th>
 								<th>胜利次数</th>
 								<th>胜率</th>
 								<th>平均排名</th>
-								
-								
 							</tr>
+							</c:when>
+							</c:choose>
+							
 						</thead>
 						<tbody>
 							<c:forEach items="${historys}" var="history">
