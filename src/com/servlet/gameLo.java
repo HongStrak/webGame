@@ -31,7 +31,13 @@ public class gameLo extends HttpServlet {
 		User user=(User) request.getSession().getAttribute("user");
 		if(user!=null)
 		{
+			if(user.getCday()==0)
+			{
 			request.getRequestDispatcher("gameLo.jsp").forward(request, response);
+			}
+			else{
+				request.getRequestDispatcher("first.jsp").forward(request, response);
+			}
 		}
 		else{
 			request.getRequestDispatcher("login.jsp").forward(request, response);
