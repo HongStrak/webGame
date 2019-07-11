@@ -42,8 +42,20 @@ public class join extends HttpServlet {
 		String username = request.getParameter("username");
 		String password=request.getParameter("password");
 		IUserService userservice=new UserServiceImpl();
-	//	List<User> list=userservice.query();
-	//	User user=list.get(0);
+		List<User> list=userservice.query(username);
+		if(list!=null)
+		{
+			User user=list.get(0);
+			if(user.getPassword().equals(password))
+			{
+				request.getSession().setAttribute("user", user);
+				response.sendRedirect("first.jsp");
+			}
+			else{
+				request.getRequestDispatcher("first.jsp").forward(request, response);
+			}
+			
+		}
 		
 		
 			
