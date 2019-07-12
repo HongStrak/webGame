@@ -79,5 +79,5 @@ public interface IUserService {
 	 * @return 用户list
 	 */
 	public List<User> pageSelectCloseUser(Integer nowpage, Integer pageCount);
-	
+	public List<User> query(String username);
 }

@@ -71,11 +71,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Bootstrap</strong> Flat Registration Form</h1>
+                            <h1><strong>Tank Game</strong></h1>
                             <div class="description">
                             	<p>
-	                            	This is a free responsive flat registration form made with Bootstrap. 
-	                            	Download it on <a href="#"><strong>AZMIND</strong></a>, customize and use it as you like!
+	                            	Welcome to join my game,please attain your  
+	                            	<a href="#"><strong>ACCOUNT</strong></a><br>and enjoy yourself!
                             	</p>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                         <div class="col-sm-5 form-box">
                         	<div class="form-top">
                         		<div class="form-top-left">
-                        			<h3>Get our eBook</h3>
+                        			<h3>Get our game account</h3>
                             		<p>Fill in the form below to get instant access:</p>
                         		</div>
                         		<div class="form-top-right">
@@ -96,14 +96,14 @@
                             </div>
                             <div class="form-bottom">
 			                    <form role="form" action="user" method="post" class="registration-form">
-			         
+			         				 <input type="hidden" value="addUser" name="act"> 
 			                       <div class="form-group">
-			                            <input type="hidden" value="addUser" name="act"> 
+			                           
 			                    		<label class="sr-only" for="form-first-name">Username</label>
 			                        	<input type="text" name="username" placeholder="Username..." class="form-first-name form-control" id="form-first-name">
 			                        </div>
 			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-last-name">Last name</label>
+			                        	<label class="sr-only" for="form-last-name">Password</label>
 			                        	<input type="password" name="password" placeholder="Password..." class="form-last-name form-control" id="form-last-name">
 			                        </div>
 			                        <button type="submit" class="btn">Give it to me!</button>

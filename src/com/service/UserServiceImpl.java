@@ -68,4 +68,9 @@ public class UserServiceImpl implements IUserService{
 	public void addUser(String username, String password) {
 		dao.addUser(username, password);
 	}
+
+	@Override
+	public List<User> query(String username) {
+		return dao.query(username);
+	}
 }

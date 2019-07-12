@@ -1,36 +1,25 @@
 package com.servlet;
-import com.Config.*;
-import com.dao.UserImpl;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.model.Tank;
 import com.model.User;
-import com.service.IUserService;
-import com.service.UserServiceImpl;
-import com.util.JdbcUtil;
-
-
 
 /**
- * Servlet implementation class join
+ * Servlet implementation class gameLo
  */
-@WebServlet("/join")
-public class join extends HttpServlet {
+@WebServlet("/gameLo")
+public class gameLo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public join() {
+    public gameLo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,31 +28,20 @@ public class join extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password=request.getParameter("password");
-		IUserService userservice=new UserServiceImpl();
-		List<User> list=userservice.query(username);
-		if(list!=null)
+		User user=(User) request.getSession().getAttribute("user");
+		if(user!=null)
 		{
-			User user=list.get(0);
-			if(user.getPassword().equals(password))
+			if(user.getCday()==0)
 			{
-				request.getSession().setAttribute("user", user);
-				response.sendRedirect("first.jsp");
+			request.getRequestDispatcher("gameLo.jsp").forward(request, response);
 			}
 			else{
 				request.getRequestDispatcher("first.jsp").forward(request, response);
 			}
-			
 		}
-		
-		
-			
-		
-		
-		
-		
-		
+		else{
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
 	}
 
 	/**

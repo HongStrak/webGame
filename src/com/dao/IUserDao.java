@@ -30,7 +30,7 @@ public interface IUserDao {
 	 * 查询所有用户
 	 * @return 返回封号用户集合
 	 */
-	public List<User> query();
+	public List<User> query(String username);
 	public List<User> selectAllUser();
 	
 	/**

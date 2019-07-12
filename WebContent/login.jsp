@@ -35,7 +35,7 @@
 			});
 		</script>
 		<!--SIGN UP-->
-		<h1>Welcome to library</h1>
+		<h1>Welcome to Game</h1>
 		<div class="login-form">
 			<div class="close"> </div>
 			<div class="head-info">

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.Config.*;
-import com.model.Tank;
 import com.model.*;
 /**
  * Servlet implementation class addRoom
@@ -33,14 +32,15 @@ public class addRoom extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");	
 		response.setCharacterEncoding("utf-8");	
-		
+		User user=(User) request.getSession().getAttribute("user");
+		String username=user.getUsername();
 		String name = request.getParameter("name");
 		ArrayList<room> rl = config.rl;
 		room r = new room();
 		r.setrName(name);
 		ArrayList<Tank> tl = new ArrayList<Tank>();
 		Tank t = new Tank();
-		t.setName(name);
+		t.setName(username);
 		tl.add(t);
 		r.setTl(tl);
 		rl.add(r);
