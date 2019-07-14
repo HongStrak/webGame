@@ -29,7 +29,7 @@
 		<div class="container " style="margin-top: 20px;">
 			<div class="row clearfix ">
 				<div class="col-md-12 column ">
-					<nav class="navbar navbar-default " role="navigation ">
+					<nav class="navbar navbar-default " role="navigation " style="background-color:pink">
 						<div class="navbar-header ">
 							 <button type="button " class="navbar-toggle " data-toggle="collapse " data-target="#bs-example-navbar-collapse-1 "> <span class="sr-only ">Toggle navigation</span><span class="icon-bar "></span><span class="icon-bar "></span><span class="icon-bar "></span></button> <a class="navbar-brand " href="# ">PlaneWar</a>
 						</div>
@@ -60,15 +60,12 @@
 							<div class="thumbnail ">
 								<img alt="300x200 " src="img/1.jpg" />
 								<div class="caption ">
-									<h3>
-										Thumbnail label
+									<h3 style="margin-left:80px">
+										Our Team
 									</h3>
 									<p>
-										Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-									</p>
-									<p>
-										 <a class="btn btn-primary " href="# ">Action</a> <a class="btn " href="# ">Action</a>
-									</p>
+										&nbsp;&nbsp; A good game needs a good team,as the fish can not survive without water
+									
 								</div>
 							</div>
 						</div>
@@ -76,15 +73,14 @@
 							<div class="thumbnail ">
 								<img alt="300x200 " src="img/2.jpg" />
 								<div class="caption ">
-									<h3>
-										Thumbnail label
+									<h3 style="margin-left:60px">
+										Origin of game 
 									</h3>
 									<p>
-										Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+										&nbsp;&nbsp;Our game just like plane war,two and more 
+										players can join the game and fight with one another
 									</p>
-									<p>
-										 <a class="btn btn-primary " href="# ">Action</a> <a class="btn " href="# ">Action</a>
-									</p>
+									
 								</div>
 							</div>
 						</div>
@@ -92,15 +88,14 @@
 							<div class="thumbnail ">
 								<img alt="300x200 " src="img/3.jpg" />
 								<div class="caption ">
-									<h3>
-										Thumbnail label
+									<h3 style="margin-left:60px">
+										Pleased People
 									</h3>
-									<p>
-										Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+									<p> 
+										&nbsp;&nbsp; Our game is full of fun,so I strongly suggest you play our game and 
+										have a good time
 									</p>
-									<p>
-										 <a class="btn btn-primary " href="# ">Action</a> <a class="btn " href="# ">Action</a>
-									</p>
+									
 								</div>
 							</div>
 						</div>
