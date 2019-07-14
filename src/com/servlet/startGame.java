@@ -8,21 +8,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.service.JsonUtils;
 import com.Config.*;
-
+import com.model.room;
 /**
- * Servlet implementation class refresh
+ * Servlet implementation class startGame
  */
-@WebServlet("/refresh")
-public class refresh extends HttpServlet {
+@WebServlet("/startGame")
+public class startGame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public refresh() {
+    public startGame() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,14 +32,26 @@ public class refresh extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		ArrayList rl = config.rl;
+		String RoomName = request.getParameter("RoomName");
 		
+		ArrayList<room> rl = config.rl;
+		boolean isEnter = true;
+//		String blo="true";
 		synchronized (rl) {
-			
-		
-		String json = JsonUtils.objectToJson(config.rl);
-		response.getWriter().print(json);
+			for(room r:rl){
+				if(r.getrName().equals(RoomName)){
+					isEnter=r.isEnter();
+					System.out.println(r.isEnter());
+				}
+			}
 		}
+//		if(isEnter==true){
+//			blo="true";
+//		}else{
+//			blo="false";
+//		}
+		response.getWriter().print(isEnter);
+		
 	}
 
 	/**

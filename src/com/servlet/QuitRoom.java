@@ -8,21 +8,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.service.JsonUtils;
 import com.Config.*;
-
+import com.model.Tank;
+import com.model.room;
 /**
- * Servlet implementation class refresh
+ * Servlet implementation class QuitRoom
  */
-@WebServlet("/refresh")
-public class refresh extends HttpServlet {
+@WebServlet("/QuitRoom")
+public class QuitRoom extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public refresh() {
+    public QuitRoom() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,13 +33,41 @@ public class refresh extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		ArrayList rl = config.rl;
+		String name = request.getParameter("name");
+		String RoomName = request.getParameter("RoomName");
 		
+		//从房间列表中找到对应房间
+		ArrayList<room> rl = config.rl;
+		ArrayList<Tank> tl = null;
+		
+		room room = null;
 		synchronized (rl) {
 			
 		
-		String json = JsonUtils.objectToJson(config.rl);
-		response.getWriter().print(json);
+		for(room r:rl){
+			if(r.getrName().equals(RoomName)){
+				room = r;
+				tl = r.getTl();
+			}
+		}
+		
+		if(!name.equals(RoomName)){
+			//从坦克列表中删除对象
+		//	synchronized (tl) {
+			Tank t= null;
+				for(int i=0;i<tl.size();i++){
+					t=tl.get(i);
+					if(t.getName().equals(name)){
+						tl.remove(t);
+					}
+				}
+		//	}
+			
+			request.getRequestDispatcher("gameLo.jsp?name="+name).forward(request, response);
+		}else if(name.equals(RoomName)){
+			rl.remove(room);
+			request.getRequestDispatcher("gameLo.jsp?name="+name).forward(request, response);
+		}
 		}
 	}
 

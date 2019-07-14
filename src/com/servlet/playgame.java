@@ -8,21 +8,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.service.JsonUtils;
 import com.Config.*;
-
+import com.model.room;
 /**
- * Servlet implementation class refresh
+ * Servlet implementation class playgame
  */
-@WebServlet("/refresh")
-public class refresh extends HttpServlet {
+@WebServlet("/playgame")
+public class playgame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public refresh() {
+    public playgame() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,13 +32,16 @@ public class refresh extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		ArrayList rl = config.rl;
-		
+		String RoomName = request.getParameter("RoomName");
+		ArrayList<room> rl = config.rl;
 		synchronized (rl) {
+			for(room r:rl){
+				if(r.getrName().equals(RoomName)){
+					r.setEnter(false);
+					System.out.println(r.isEnter());
+				}
+			}
 			
-		
-		String json = JsonUtils.objectToJson(config.rl);
-		response.getWriter().print(json);
 		}
 	}
 

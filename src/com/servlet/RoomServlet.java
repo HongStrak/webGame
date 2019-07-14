@@ -18,6 +18,10 @@ public class RoomServlet extends BaseServlet {
 
 	protected void refresh(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		
 		String roomName = request.getParameter("roomName");
 		ArrayList<room> list = config.rl;
 		for (room room : list) {

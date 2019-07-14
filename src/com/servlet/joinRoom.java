@@ -37,6 +37,9 @@ public class joinRoom extends HttpServlet {
 		String name = request.getParameter("name");
 		ArrayList<room> rl = config.rl;
 		ArrayList<Tank> tl = null;
+		synchronized (rl) {
+			
+		
 		for(room r:rl){
 			if(r.getrName().equals(RoomName)){
 				tl = r.getTl();
@@ -46,7 +49,8 @@ public class joinRoom extends HttpServlet {
 		t.setName(name);
 		tl.add(t);
 		request.getRequestDispatcher("room.jsp?RoomName="+RoomName+"&name="+name).forward(request, response);
-	}
+		}
+		}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

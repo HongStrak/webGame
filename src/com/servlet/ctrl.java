@@ -37,7 +37,6 @@ public class ctrl extends HttpServlet {
 		ArrayList<Tank> tl = null;
 		String name = request.getParameter("name");
 		String RoomName = request.getParameter("RoomName");
-		System.out.println(name);
 		ArrayList<room> rl = config.rl;
 		for(room r:rl){
 			if(r.getrName().equals(RoomName)){

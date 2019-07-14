@@ -32,18 +32,23 @@ public class addRoom extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");	
 		response.setCharacterEncoding("utf-8");	
-		User user=(User) request.getSession().getAttribute("user");
-		String username=user.getUsername();
+		
+		
+		
 		String name = request.getParameter("name");
 		ArrayList<room> rl = config.rl;
+		synchronized (rl) {
+			
+		
 		room r = new room();
 		r.setrName(name);
 		ArrayList<Tank> tl = new ArrayList<Tank>();
 		Tank t = new Tank();
-		t.setName(username);
+		t.setName(name);
 		tl.add(t);
 		r.setTl(tl);
 		rl.add(r);
+		}
 	}
 
 	/**
