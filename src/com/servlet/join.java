@@ -43,7 +43,7 @@ public class join extends HttpServlet {
 		String password=request.getParameter("password");
 		IUserService userservice=new UserServiceImpl();
 		List<User> list=userservice.query(username);
-		if(list!=null)
+		if(list.size()>0)
 		{
 			User user=list.get(0);
 			if(user.getPassword().equals(password))

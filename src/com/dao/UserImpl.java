@@ -14,7 +14,7 @@ import com.util.JdbcUtil;
 public class UserImpl implements IUserDao {
 
 	public void addUser(String username,String password) {
-		String sql="insert into tb_user (username,passowrd) values(?,?)";
+		String sql="insert into tb_user (username,password) values(?,?)";
 		DBUtils.executeDML(sql, new Object[] {username,password});
 	}
 

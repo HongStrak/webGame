@@ -138,7 +138,7 @@ public class UserServlet extends BaseServlet{
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		service.addUser(username, password);
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("first1.jsp");
 	}
 
 }

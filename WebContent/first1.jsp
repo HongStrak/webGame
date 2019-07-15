@@ -111,6 +111,9 @@ body {
 	width: 1349px;
 	height: 600px;
 }
+#cosplay{
+	display:none;
+}
 #butt{
 position:absolute;
 right:0;
@@ -164,7 +167,7 @@ right:0;
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
 
-					<div class="collapse navbar-collapse"
+					<div id="test" class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 
 						<ul class="nav navbar-nav navbar-right">
@@ -186,7 +189,12 @@ right:0;
 							<a href="#" onclick="showdiv()">Login</a>
 							</c:when>
 							<c:otherwise>
-							<a href="#">${user.username}</a>
+							<a onmouseover="cosplay()" href="#">${user.username}</a>
+							<ul id="cosplay" >
+							<li><a href="#">MyRecord</a></li>
+							<li><a href="checkOut">checkOut</a></li>
+							</ul>
+							
 							</c:otherwise>
 							</c:choose>
 							</li>
@@ -503,4 +511,9 @@ right:0;
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+function cosplay(){
+	document.getElementById("cosplay").style.display="block";
+}
+</script>
 </html>
