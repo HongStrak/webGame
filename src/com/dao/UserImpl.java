@@ -96,18 +96,14 @@ public class UserImpl implements IUserDao {
 
 	@Override
 	public List<User> pageSelectUser(Integer nowpage, Integer pageCount) {
-		String sql = "select id,username,password,credit,cday from "
-				+ "(select rownum num,t.* from (select * from tb_user order by id) t ) "
-				+ "where num <=  "+nowpage*pageCount+" and num > "+(nowpage-1)*pageCount;
+		String sql = "select id,username,password,credit,cday from tb_user limit "+(nowpage-1)*pageCount+","+pageCount;
 		
 		return DBUtils.executeQuery(sql, null, User.class);
 	}
 
 	@Override
 	public List<User> pageSelectCloseUser(Integer nowpage, Integer pageCount) {
-		String sql = "select id,username,password,credit,cday from "
-				+ "(select rownum num,t.* from (select * from tb_user where cday > 0 order by id) t ) "
-				+ "where num <=  "+nowpage*pageCount+" and num > "+(nowpage-1)*pageCount;
+		String sql = "select id,username,password,credit,cday from tb_user where cday > 0 limit "+(nowpage-1)*pageCount+","+pageCount;
 		return DBUtils.executeQuery(sql, null, User.class);
 	}
 
