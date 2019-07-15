@@ -16,15 +16,13 @@ public class JdbcUtil {
 	private Connection conn=null;
 	private PreparedStatement pst=null;
 	private ResultSet RS=null;
-	private String host="192.168.137.1";
-	private String uri="jdbc:oracle:thin:@"
-			+ "localhost"
-			+ ":1521/orcl";
-	private String username="scott";
-	private String password="admin";
+	private String host="106.14.124.9";
+	private String uri="jdbc:mysql://106.14.124.9/datashare";
+	private String username="root";
+	private String password="123456";
 	static{
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -177,7 +177,7 @@ right:0;
 							<a href="#" onclick="showdiv()">Login</a>
 							</c:when>
 							<c:otherwise>
-							${user.username}
+							<a href="#">${user.username}</a>
 							</c:otherwise>
 							</c:choose>
 							</li>
@@ -492,7 +492,6 @@ right:0;
 					style="width: 70px; height: 30px;" id="butt">
 			</form>
 		</div>
-		<div id="submit"><a href="">登陆</a></div>
 	</div>
 </body>
 </html>
