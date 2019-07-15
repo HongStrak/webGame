@@ -36,7 +36,7 @@ public class gameLo extends HttpServlet {
 			request.getRequestDispatcher("gameLo.jsp").forward(request, response);
 			}
 			else{
-				request.getRequestDispatcher("first.jsp").forward(request, response);
+				request.getRequestDispatcher("first1.jsp").forward(request, response);
 			}
 		}
 		else{
