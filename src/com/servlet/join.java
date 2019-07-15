@@ -51,12 +51,12 @@ public class join extends HttpServlet {
 				request.getSession().setAttribute("user", user);
 				response.sendRedirect("first1.jsp");
 			}
-			else{
-				request.getRequestDispatcher("first1.jsp").forward(request, response);
-			}
+			
 			
 		}
-		
+		else{
+			request.getRequestDispatcher("first1.jsp").forward(request, response);
+		}
 		
 			
 		

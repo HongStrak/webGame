@@ -170,7 +170,16 @@ right:0;
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="person1.jsp">My info</a></li>
 							<li><a href="History.jsp">WarRecord</a></li>
-							<li><a href="gameLo">gameLobby</a></li>
+							<li>
+							<c:choose>
+							<c:when test="${user eq null }">
+							<a href="#">gameLobby</a>
+							</c:when>
+							<c:otherwise>
+							<a href="gameLo.jsp?name=${user.username}">gameLobby</a>
+							</c:otherwise>
+							</c:choose>
+							</li>
 							<li>
 							<c:choose>
 							<c:when test="${user eq null }">
