@@ -51,7 +51,7 @@
 	height: 250px;
 	padding: 8px;
 	border: 8px solid #E8E9F7;
-	background-color: #ff0033;
+	background-color: #FF6666;
 
 }
 
