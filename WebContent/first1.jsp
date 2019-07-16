@@ -48,10 +48,10 @@
 	top: 25%;
 	left: 40%;
 	width: 400px;
-	height: 250ox;
+	height: 250px;
 	padding: 8px;
 	border: 8px solid #E8E9F7;
-	background-color: #cc0000;
+	background-color: #ff0033;
 
 }
 
@@ -68,7 +68,7 @@
 	left:0;
 }
 #btnclose {
-	background-color: cornsilk;
+	background-color: #ffcccc;
 }
 
 #login {
@@ -116,8 +116,8 @@ body {
 }
 #butt{
 position:absolute;
-right:0;
-
+left:120px;
+background-color:#0066ff;
 }
 
 </style>
@@ -505,8 +505,8 @@ right:0;
 					style="width: 150px; height: 30px;"> <br> <br> 密
 				码：<input type="text" name="password"
 					style="width: 150px; height: 30px;"> <br><br>
-				 <input type="submit" value="登录"
-					style="width: 70px; height: 30px;" id="butt">
+				操作： <input type="submit" value="登录"
+					style="width: 100px; height: 40px;" id="butt">
 			</form>
 		</div>
 	</div>
