@@ -5,9 +5,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>学无止境_杨青个人博客 - 一个站在web前端设计之路的女技术员个人博客网站</title>
-		<meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青" />
-		<meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
+		<title>个人主页</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="css/base.css" rel="stylesheet">
 		<link href="css/index.css" rel="stylesheet">
@@ -229,7 +227,7 @@
 		<header>
 			<div class="tophead">
 				<div class="logo">
-					<a href="/">杨青个人博客</a>
+					<a href="/">个人主页</a>
 				</div>
 
 				<nav class="topnav" id="topnav">
@@ -394,7 +392,7 @@
 					</div>
 					<div class="name">
 						<ul>
-							<li>LOL官方视频</li>
+							<li>Plane官方视频</li>
 							<br>
 							<li class="attention">关注</li>
 
@@ -406,7 +404,7 @@
 					</div>
 					<div class="name">
 						<ul>
-							<li>LOL皮肤</li>
+							<li>Plane皮肤</li>
 							<br>
 							<li class="attention">关注</li>
 
@@ -431,7 +429,7 @@
 					</div>
 					<div class="name">
 						<ul>
-							<li>英雄联盟</li>
+							<li>机甲大战</li>
 							<br>
 							<li class="attention">关注</li>
 
@@ -479,7 +477,7 @@
 					</div>
 					<div class="name">
 						<ul>
-							<li>LOL视频</li>
+							<li>Plane视频</li>
 							<br>
 							<li class="attention">关注</li>
 
