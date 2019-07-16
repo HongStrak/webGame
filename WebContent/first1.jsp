@@ -183,6 +183,7 @@ background-color:#0066ff;
 							</c:otherwise>
 							</c:choose>
 							</li>
+							<li><a href="signup.jsp" >Signup</a></li>
 							<li>
 							<c:choose>
 							<c:when test="${user eq null }">
@@ -190,15 +191,12 @@ background-color:#0066ff;
 							</c:when>
 							<c:otherwise>
 							<a onmouseover="cosplay()" href="#">${user.username}</a>
-							<ul id="cosplay" >
-							<li><a href="#">MyRecord</a></li>
-							<li><a href="checkOut">checkOut</a></li>
-							</ul>
-							
 							</c:otherwise>
 							</c:choose>
 							</li>
-							<li><a href="signup.jsp" >Signup</a></li>
+							<c:if test="${user ne null }">
+							<li><a href="checkOut">CheckOut</a></li>
+							</c:if>
 						</ul>
 
 					</div>
@@ -503,7 +501,7 @@ background-color:#0066ff;
 			<form action="join" method="get">
 				账 号：<input type="text" name="username"
 					style="width: 150px; height: 30px;"> <br> <br> 密
-				码：<input type="text" name="password"
+				码：<input type="password" name="password"
 					style="width: 150px; height: 30px;"> <br><br>
 				操作： <input type="submit" value="登录"
 					style="width: 100px; height: 40px;" id="butt">
