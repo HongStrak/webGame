@@ -26,7 +26,8 @@
 		margin-left: 10%;
 		height: 12%;
 		text-align: center;
-		line-height: 12%;
+		line-height: 5;
+		font-size:20px;
 	}
 	.prepare{
 		width: 200px;
@@ -49,10 +50,7 @@
 </style>
 <body>
 
-<%-- <%
-	String roomName = request.getParameter("RoomName");
-	request.setAttribute("RoomName", roomName);
-%> --%>
+
 
 <div class="grid-1-1 total" >
 	<div style=" height:100%;background-color:#00d1b2; 	text-align: center;">
@@ -73,7 +71,7 @@
 	<div style="height:100%;background-color:#ffdd57; ">
 		<div style="height: 25%; ">
 			<button class="button  radius-10 left room" >
-				<a id="quit" href="QuitRoom?RoomName=${param.RoomName}&name=${param.name} ">退出房间</a>
+				<a id="quit" href="QuitRoom?RoomName=${param.RoomName}&name=${param.name}" >退出房间</a>
 			</button>
 		</div>
 		<div class="emp 4"  style="background-color:darkgoldenrod">
