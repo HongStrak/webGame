@@ -41,7 +41,6 @@ public class startGame extends HttpServlet {
 			for(room r:rl){
 				if(r.getrName().equals(RoomName)){
 					isEnter=r.isEnter();
-					System.out.println(r.isEnter());
 				}
 			}
 		}

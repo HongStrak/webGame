@@ -194,9 +194,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							var div = document.createElement("div");
 							div.setAttribute("class","room");
 							div.innerHTML="<a href='joinRoom?name="+name+"&RoomName="+iteam.rName+"'>"+iteam.rName+"</a>";
-							div.style.cssText="float:left;width:200px;height:200px;margin-top:20px;margin-left:20px;background-color:green;";
+							div.style.cssText="float:left;width:200px;height:200px;margin-top:20px;margin-left:20px;background-color:darkgreen;";
 							if(iteam.isEnter==false){
-								div.style.cssText+="background-color:red;";
+								div.style.cssText+="background-color:darkred;";
 							}
 							id("xs").appendChild(div);
 						});

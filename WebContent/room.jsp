@@ -126,13 +126,17 @@ history.pushState(null, null, document.URL);
 			dataType:"json",
 			success:function(result){
 				console.log(result);
+				if(result.length==0){
+					window.location.href="gameLo.jsp?name="+name;
+				}else{
+					$.each(clz("player"),function(index,iteam){
+						iteam.innerHTML="";
+					});
+					$.each(result,function(index,iteam){
+					clz("player")[index].innerHTML=iteam.name;
+					});
+				}
 				
-				$.each(clz("player"),function(index,iteam){
-					iteam.innerHTML="";
-				});
-				$.each(result,function(index,iteam){
-				clz("player")[index].innerHTML=iteam.name;
-				});
 			},
 			error:function(){
 				refresh();
@@ -145,7 +149,6 @@ history.pushState(null, null, document.URL);
 			url:"startGame",
 			data:{"RoomName":RoomName },
 			success:function(result){
-				console.log(result);
 				if(result=="false"){
 					window.location.href = "joinG?RoomName="+RoomName+"&name="+name;
 				}
