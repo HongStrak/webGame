@@ -27,12 +27,12 @@ public class HisServlet extends BaseServlet {
 			if(currentPage!=null){
 				cp=Integer.parseInt(currentPage);
 			}
-			
-			String sql="select * from (select t1.*,rownum num from "
-					+ "(select * from history order by heronum desc) t1 where rownum<="+pz*cp+") t2 "
-					+ "where t2.num>"+(cp-1)*pz+"and  1=1 ";
+			String sql="select * from history limit "+(cp-1)*pz+","+pz;
+//			sql="select * from (select t1.*,rownum num from "
+//					+ "(select * from history order by heronum desc) t1 where rownum<="+pz*cp+") t2 "
+//					+ "where t2.num>"+(cp-1)*pz+"and  1=1 ";
 			if(heroname!=null && !heroname.equals("")){
-				sql=" select * from heroname where heroname=? ";
+				sql=" select * from history where heroname=? ";
 
 			} 
 			PreparedStatement psmt = conn.prepareStatement(sql);
