@@ -15,7 +15,7 @@
 <script type="text/javascript" src="js/draw.js"></script>
 
 <script>
-
+var fired=0;
 var time=5;
 var rangeLen=200;
 var rangeAng=60;
@@ -35,6 +35,16 @@ var volume=40;    //等于R 半径
 var pointX;
 var pointY;
 </script>
+<style type="text/css">
+#fire{
+clip: rect(0px,603px,300px,300px);
+top:-138px;
+left:-261px;
+height:100px;
+width:200px;
+position: absolute;
+}
+</style>
 </head>
 <body>
 <input id="name" type="hidden" value="${name}">
@@ -45,7 +55,10 @@ var pointY;
 <div id="me">
 
 </div>
-<div id="sp"></div>
+<div id="sp">
+<div id="fire"><img  src="img/fire.gif"></div>
+
+</div>
 <div id="death"><div id="time"><font size="4" color="green">复活倒计时：</font>
 <br>
 <input type="text" id="timeo">
@@ -60,7 +73,7 @@ var pointY;
 <script type="text/javascript" >
 var RoomName=id("RoomName").value;
 var sp = id("sp");
-
+document.getElementById("fire").style.display="none";
 var me = document.getElementById("me");
 var name = document.getElementById("name").value;
 var main = document.getElementById("main");
@@ -117,6 +130,12 @@ function draw(){
 	})
 }
 id("main").onclick=function(){
+	document.getElementById("fire").style.display="block";
+	
+	if(fired==0){
+		setTimeout("fun1()",1000);
+	}
+	fired=1;
 	
 	$.each(clz("other"),function(index,iteam){
 		if(isByShoot(iteam,angle)&&alive){
@@ -150,7 +169,10 @@ pointX=e.clientX-(document.body.clientWidth-1366)/2;
 pointY=e.clientY;
 angle=xyToAngle(centerX,centerY,pointX,pointY);
 }
-
+function fun1(){
+	document.getElementById("fire").style.display="none";
+	fired=0;
+}
 
 
 </script>

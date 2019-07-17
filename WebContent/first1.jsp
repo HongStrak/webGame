@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
+<script type="text/javascript" src="js/draw.js"></script>
 <script type="application/x-javascript">
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 </script>
@@ -25,35 +26,9 @@
 <script src="index/js/bootstrap.min.js">
 	
 </script>
-<script language="javascript" type="text/javascript">
-	function showdiv() {
-		document.getElementById("show").style.display = "block";
-		$('body').css("z-index","1")
-		$('body').css("overflow", "hidden")
-		
-	}
-	function hidediv() {
-		document.getElementById("show").style.display = 'none';
 
-		$('body').css("overflow", "auto")
-		$('body').css("opacity", "1")
-	}
-</script>
 <style type="text/css">
 
-
-#show {
-	display: none;
-	position: absolute;
-	top: 25%;
-	left: 40%;
-	width: 400px;
-	height: 250px;
-	padding: 8px;
-	border: 8px solid #E8E9F7;
-	background-color: #FF6666;
-
-}
 
 
 #btnbegin {
@@ -111,13 +86,9 @@ body {
 	width: 1349px;
 	height: 600px;
 }
-#cosplay{
-	display:none;
-}
 #butt{
 position:absolute;
-left:120px;
-background-color:#0066ff;
+left:270px;
 }
 
 </style>
@@ -128,14 +99,20 @@ background-color:#0066ff;
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
-	jQuery(document).ready(function($) {
+ 	 jQuery(document).ready(function($) {
 		$(".scroll").click(function(event) {
 			event.preventDefault();
 			$('html,body').animate({
 				scrollTop : $(this.hash).offset().top
 			}, 2000);
 		});
-	});
+	}); 
+ 	function showdiv(){
+ 	document.getElementById("modelLogin").style.cssText="overflow:scroll";
+ 	}
+ 	
+ 	
+// 	$("body").unbind('touchmove');
 </script>
 <!-- //End-Smooth-Scrolling -->
 
@@ -144,6 +121,7 @@ background-color:#0066ff;
 <script src="index/js/easyResponsiveTabs.js"></script>
 
 </head>
+
 
 <body>
 
@@ -187,7 +165,7 @@ background-color:#0066ff;
 							<li>
 							<c:choose>
 							<c:when test="${user eq null }">
-							<a href="#" onclick="showdiv()">Login</a>
+							<a href="#" data-toggle="modal" data-target="#myModal" onclick="showdiv()">Login</a>
 							</c:when>
 							<c:otherwise>
 							<a onmouseover="cosplay()" href="#">${user.username}</a>
@@ -490,7 +468,7 @@ background-color:#0066ff;
 			});
 		});
 	</script>
-	<div id="show">
+<!-- 	<div id="show">
 
 		<div id="box">
 			<input id="btnclose" type="button" value="返回" onclick="hidediv();"
@@ -507,11 +485,45 @@ background-color:#0066ff;
 					style="width: 100px; height: 40px;" id="butt">
 			</form>
 		</div>
-	</div>
+	</div> -->
+	
+	
+	<div  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y:scroll">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" 
+						aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					login
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form action="join" method="get">
+				账 号：<input type="text" name="username"
+					style="width: 150px; height: 30px;"> <br> <br>
+					密码：<input type="password" name="password"
+					style="width: 150px; height: 30px;"> <br><br>&nbsp;&nbsp;&nbsp;&nbsp;
+				 	<input type="submit" value="登录"
+					style="width: 100px; height: 40px;" id="butt">
+			</form>
+			<br><br>
+			</div>
+			<!-- <div class="modal-footer">
+				<button type="button" class="btn btn-default" 
+						data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary">
+					提交更改
+				</button>
+			</div> -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
 </body>
 <script type="text/javascript">
-function cosplay(){
-	document.getElementById("cosplay").style.display="block";
-}
+
 </script>
 </html>
