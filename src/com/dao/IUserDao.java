@@ -12,6 +12,12 @@ public interface IUserDao {
 	 */
 	public void addUser(String username,String password);
 	
+	/**
+	 *  增加历史记录用户
+	 * @param heronum 账号
+	 * @param heroname 密码
+	 */
+	public void addHistoryUser(String heroname);
 	
 	/**
 	 * 查询被封号的用户

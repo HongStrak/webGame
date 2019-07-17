@@ -120,6 +120,33 @@ public class UserImpl implements IUserDao {
 	}
 
 
+	@Override
+	public void addHistoryUser(String heroname) {
+		Integer heronum = null;
+		String sql1 = "select id from tb_user where username = ?";
+		Connection conn = DBUtils.getConn();
+		ResultSet rs = null;
+		PreparedStatement ps = null;
+		
+		try {
+			ps = conn.prepareStatement(sql1);
+			ps.setObject(1, heroname);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				heronum = rs.getInt("id");
+				System.out.println(heronum);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.close(rs, ps, conn);
+		}
+		
+		String sql="insert into history (heronum,heroname) values(?,?)";
+		DBUtils.executeDML(sql, new Object[] {heronum,heroname});
+	}
+
+
 
 	
 

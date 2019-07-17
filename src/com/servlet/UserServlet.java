@@ -133,12 +133,18 @@ public class UserServlet extends BaseServlet{
 		
 	}
 	
-	protected void addUser(HttpServletRequest request, HttpServletResponse response) throws IOException
+	protected void addUser(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException
 	{
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		service.addUser(username, password);
+		service.addHistoryUser(username);
+		User user = new User();
+		user.setUsername(username);
+		request.getSession().setAttribute("user",user);
 		response.sendRedirect("first1.jsp");
+		//request.getRequestDispatcher("first1.jsp").forward(request, response);
 	}
 
 }

@@ -12,6 +12,11 @@ public interface IUserService {
 	 */
 	public void addUser(String username,String password);
 	
+	/**
+	 *  增加历史记录用户
+	 * @param heronum 姓名
+	 */
+	public void addHistoryUser(String heroname);
    
    /**
 	 * 查询被封号的用户

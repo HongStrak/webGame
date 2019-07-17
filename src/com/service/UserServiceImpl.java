@@ -73,4 +73,10 @@ public class UserServiceImpl implements IUserService{
 	public List<User> query(String username) {
 		return dao.query(username);
 	}
+
+	@Override
+	public void addHistoryUser( String heroname) {
+		dao.addHistoryUser(heroname);
+	}
+	
 }
