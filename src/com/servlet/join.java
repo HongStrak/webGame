@@ -49,13 +49,14 @@ public class join extends HttpServlet {
 			if(user.getPassword().equals(password))
 			{
 				request.getSession().setAttribute("user", user);
-				response.sendRedirect("first1.jsp");
+				response.getWriter().write("true");
 			}
 			
 			
 		}
 		else{
-			request.getRequestDispatcher("first1.jsp").forward(request, response);
+			//request.getRequestDispatcher("first1.jsp").forward(request, response);
+			response.getWriter().write("false");
 		}
 		
 			

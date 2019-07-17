@@ -500,12 +500,12 @@ left:270px;
 				</h4>
 			</div>
 			<div class="modal-body">
-				<form action="join" method="get">
+				<form action="join" id="login2" method="get">
 				账 号：<input type="text" class="form-control" name="username"
 					style="width: 180px; height: 30px;margin-left:200px;"> <br> <br>
 					密码：<input type="password" class="form-control" name="password"
 					style="width: 180px; height: 30px;margin-left:200px;"> <br><br>&nbsp;&nbsp;&nbsp;&nbsp;
-				 	<input type="submit" class="btn btn-info" value="登录"
+				 	<input id="submit" type="button" class="btn btn-info" value="登录"
 					style="width: 100px; height: 40px;" id="butt">
 			</form>
 			<br><br>
@@ -524,6 +524,49 @@ left:270px;
 	
 </body>
 <script type="text/javascript">
-
+	$(function(){
+    	  $("[name = username]").blur(function(){
+			var value = $("[name = username]").val();
+			// 4-10
+			var reg = /^[a-zA-Z0-9]{4,10}$/;
+			if(!reg.test(value)){
+				alert("账号语法错误");
+			}
+    	  })
+    	  
+    	  $("[name = password]").blur(function(){
+			var value = $("[name = password]").val();
+			// 4-10
+			var reg = /^[a-zA-Z0-9]{4,10}$/;
+			if(!reg.test(value)){
+				alert("密码语法错误");
+			}
+    	  })
+	    	  
+		   // 监听点击保存按钮事件
+		$("#submit").click(function() {
+			
+			
+			 $.ajax({
+		           //几个参数需要注意一下
+		           url: "join",//url
+		              type: "get",//方法类型
+		              dataType:"text",//预期服务器返回的数据类型
+		              data:$('#login2').serialize(),
+		              success:function (result) {
+		                  console.log(result);//打印服务端返回的数据(调试用)
+		              	if(result == "false"){
+		                   alert("账号或密码错误");
+		              	}else if(result == "true"){
+		              		window.location.href = "first1.jsp";
+		              	}
+		              },
+		              error : function(result) {
+		              	console.log(result);
+		                  alert("异常！");
+		              }
+		          });
+		})
+	})
 </script>
 </html>

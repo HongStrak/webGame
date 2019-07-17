@@ -110,7 +110,7 @@ public class UserImpl implements IUserDao {
 
 	@Override
 	public List<User> query(String username) {
-		String sql="select * from tb_user where username=?";
+		String sql="select * from tb_user where username=? and cday = 0";
 		List<Object> params=new ArrayList<Object>();
 		params.add(username);
 		JdbcUtil jdbc=new JdbcUtil();

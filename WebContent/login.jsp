@@ -15,6 +15,8 @@
 				window.scrollTo(0, 1);
 			}
 		</script>
+		
+		
 		<meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
 		<link href="css/style.css" rel='stylesheet' type='text/css' />
 		<!--webfonts-->
@@ -22,8 +24,21 @@
 		<link href='http://fonts.useso.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
 		<!--//webfonts-->
 		<script src="http://ajax.useso.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/jquery-2.2.3.min.js"></script>
 	</head>
-
+	
+    <style type="text/css">
+			#submit{
+				font-size: 30px;
+			    color: #fff;
+			    outline: none;
+			    border: none;
+			    background: #3ea751;
+			    width: 100%;
+			    padding: 18px 0;
+			    cursor: pointer;
+			}
+		</style>
 	<body>
 		<script>
 			$(document).ready(function(c) {
@@ -47,13 +62,13 @@
 			<div class="avtar">
 				<img src="images/avtar.png" />
 			</div>
-			<form action="join" method="post">
-				<input type="text" class="text" value="Username" autocomplete="off"  name="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
+			<form action="" method="post" id="login">
+				<input  type="text" class="text" value="Username"  autocomplete="off"  name="username" onfocus="this.value = '';" >
 				<div class="key">
-					<input type="password" value="Password" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+					<input  type="password" value="Password"  name="password" onfocus="this.value = '';" >
 				</div>
 				<div class="signin">
-				<input type="submit" value="Login">
+				<input type="button" id="submit" value="Login">
 			    </div>
 			</form>
 			
@@ -61,6 +76,55 @@
 		
 
 	</body>
-
+	
+	<script type="text/javascript">
+      $(function(){
+    	  $("[name = username]").blur(function(){
+			var value = $("[name = username]").val();
+			// 4-10
+			var reg = /^[a-zA-Z0-9]{4,10}$/;
+			if(!reg.test(value)){
+				alert("账号语法错误");
+			}
+    	  })
+    	  
+    	  $("[name = password]").blur(function(){
+			var value = $("[name = password]").val();
+			// 4-10
+			var reg = /^[a-zA-Z0-9]{4,10}$/;
+			if(!reg.test(value)){
+				alert("密码语法错误");
+			}
+    	  })
+    	  
+    	   // 监听点击保存按钮事件
+		$("#submit").click(function() {
+			alert("sadsa");
+			 $.ajax({
+		           //几个参数需要注意一下
+		           url: "join",//url
+		              type: "get",//方法类型
+		              dataType:"text",//预期服务器返回的数据类型
+		              data:$('#login').serialize(),
+		              success:function (result) {
+		                  console.log(result);//打印服务端返回的数据(调试用)
+		              	if(result == "false"){
+		                   alert("账号或密码错误");
+		              	}else if(result == "true"){
+		              		window.location.href = "first1.jsp";
+		              	}
+		              },
+		              error : function(result) {
+		              	console.log(result);
+		                  alert("异常！");
+		              }
+		          });
+			})
+			
+			
+      })
+      
+   
+    </script>
 </html>
     
