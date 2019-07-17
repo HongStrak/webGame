@@ -41,6 +41,8 @@ public class ByShoot extends HttpServlet {
 		ArrayList<Tank> tl = null;
 		String name = request.getParameter("name");
 		String RoomName = request.getParameter("RoomName");
+		String myName = request.getParameter("myName");
+		Tank myTank = null;
 		ArrayList<room> rl = config.rl;
 		for(room r:rl){
 			if(r.getrName().equals(RoomName)){
@@ -53,12 +55,20 @@ public class ByShoot extends HttpServlet {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		for(Tank t:tl){
+			if(t.getName().equals(myName)){
+				myTank = t;
+			}
+		}
 		
 		for(Tank t:tl){
 			if(t.getName().equals(name)){
 				
 				t.setHp((t.getHp()-attack));
-				
+				//判断是否击杀
+				if(t.getHp()<=0){
+					myTank.setHeadCount(myTank.getHeadCount()+1);
+				}
 			}
 		}
 		

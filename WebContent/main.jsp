@@ -143,7 +143,7 @@ id("main").onclick=function(){
 			$.ajax({
 				url:"ByShoot",
 				type:"get",
-				data:{'attack':attack,'name':iteam.getAttribute("id"),'RoomName':RoomName},
+				data:{'attack':attack,'name':iteam.getAttribute("id"),'RoomName':RoomName,'myName':name},
 				dataType:"json",
 				success:function(result){
 					

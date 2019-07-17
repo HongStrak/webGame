@@ -1,11 +1,15 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class room {
 	private String rName;
+	
 	private boolean isEnter=true;
 	private ArrayList<Tank> tl = new ArrayList<Tank>();
+	
 	public ArrayList<Tank> getTl() {
 		return tl;
 	}
