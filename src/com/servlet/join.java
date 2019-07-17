@@ -43,7 +43,7 @@ public class join extends HttpServlet {
 		String password=request.getParameter("password");
 		IUserService userservice=new UserServiceImpl();
 		List<User> list=userservice.query(username);
-		if(list.size()>0)
+		if(list.size() > 0)
 		{
 			User user=list.get(0);
 			if(user.getPassword().equals(password))
@@ -51,7 +51,10 @@ public class join extends HttpServlet {
 				request.getSession().setAttribute("user", user);
 				response.getWriter().write("true");
 			}
-			
+			else{
+				//request.getRequestDispatcher("first1.jsp").forward(request, response);
+				response.getWriter().write("false");
+			}
 			
 		}
 		else{

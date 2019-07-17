@@ -84,7 +84,7 @@
 			// 4-10
 			var reg = /^[a-zA-Z0-9]{4,10}$/;
 			if(!reg.test(value)){
-				alert("账号语法错误");
+				alert("账号格式错误");
 			}
     	  })
     	  
@@ -93,7 +93,7 @@
 			// 4-10
 			var reg = /^[a-zA-Z0-9]{4,10}$/;
 			if(!reg.test(value)){
-				alert("密码语法错误");
+				alert("密码格式错误");
 			}
     	  })
     	  
@@ -111,6 +111,7 @@
 		              	if(result == "false"){
 		                   alert("账号或密码错误");
 		              	}else if(result == "true"){
+		              		alert("登陆成功");
 		              		window.location.href = "first1.jsp";
 		              	}
 		              },
