@@ -501,11 +501,11 @@ left:270px;
 			</div>
 			<div class="modal-body">
 				<form action="join" method="get">
-				账 号：<input type="text" name="username"
-					style="width: 150px; height: 30px;"> <br> <br>
-					密码：<input type="password" name="password"
-					style="width: 150px; height: 30px;"> <br><br>&nbsp;&nbsp;&nbsp;&nbsp;
-				 	<input type="submit" value="登录"
+				账 号：<input type="text" class="form-control" name="username"
+					style="width: 180px; height: 30px;margin-left:200px;"> <br> <br>
+					密码：<input type="password" class="form-control" name="password"
+					style="width: 180px; height: 30px;margin-left:200px;"> <br><br>&nbsp;&nbsp;&nbsp;&nbsp;
+				 	<input type="submit" class="btn btn-info" value="登录"
 					style="width: 100px; height: 40px;" id="butt">
 			</form>
 			<br><br>
