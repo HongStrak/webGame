@@ -19,8 +19,8 @@ public class HisServlet extends BaseServlet {
 		
 		String heroname = request.getParameter("heroname");
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/orcl", "scott", "admin");
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://106.14.124.9/datashare", "root", "123456");
 			
 			int cp=1;
 			String currentPage = request.getParameter("cp");
