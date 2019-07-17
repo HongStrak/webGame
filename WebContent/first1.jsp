@@ -96,6 +96,7 @@ left:270px;
 <link rel="stylesheet" href="index/css/style.css" type="text/css"
 	media="all">
 <!-- Start-Smooth-Scrolling -->
+<link href="javaex/pc/css/icomoon.css" rel="stylesheet" />
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
@@ -501,9 +502,9 @@ left:270px;
 			</div>
 			<div class="modal-body">
 				<form action="join" id="login2" method="get">
-				账 号：<input type="text" class="form-control" name="username"
+				账 号：<span id="user" ></span><input type="text" class="form-control" name="username"
 					style="width: 180px; height: 30px;margin-left:200px;"> <br> <br>
-					密码：<input type="password" class="form-control" name="password"
+					密码：<span id="pwd" ></span><input type="password" class="form-control" name="password"
 					style="width: 180px; height: 30px;margin-left:200px;"> <br><br>&nbsp;&nbsp;&nbsp;&nbsp;
 				 	<input id="submit" type="button" class="btn btn-info" value="登录"
 					style="width: 100px; height: 40px;" id="butt">
@@ -525,21 +526,36 @@ left:270px;
 </body>
 <script type="text/javascript">
 	$(function(){
+		
+		
     	  $("[name = username]").blur(function(){
 			var value = $("[name = username]").val();
 			// 4-10
 			var reg = /^[a-zA-Z0-9]{4,10}$/;
-			if(!reg.test(value)){
-				alert("账号格式错误");
+			if(!reg.test(value) ){
+				//alert("sadas");
+				 $("#user").addClass("icon-close2");
+				$("#user").css({ "font-size":"20px","color":"red" }); 
+			}else{
+				 $("#user").removeClass("icon-close2");
+				$("#user").addClass("icon-check2");
+				$("#user").css({ "font-size":"20px","color":"#00FF33" }); 
 			}
     	  })
     	  
     	  $("[name = password]").blur(function(){
 			var value = $("[name = password]").val();
+			var uvalue = $("[name = username]").val();
 			// 4-10
 			var reg = /^[a-zA-Z0-9]{4,10}$/;
-			if(!reg.test(value)){
-				alert("密码格式错误");
+			
+			if(!reg.test(value) ){
+				 $("#pwd").css({ "font-size":"20px","color":"red" });
+				$("#pwd").addClass("icon-close2"); 
+			}else{
+				 $("#pwd").removeClass("icon-close2");
+				$("#pwd").addClass("icon-check2");
+				$("#pwd").css({ "font-size":"20px","color":"#00FF33" }); 
 			}
     	  })
 	    	  

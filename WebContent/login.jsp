@@ -20,6 +20,7 @@
 		<meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
 		<link href="css/style.css" rel='stylesheet' type='text/css' />
 		<!--webfonts-->
+		<link rel="stylesheet" href="index/css/bootstrap.min.css">
 		<link href='http://fonts.useso.com/css?family=PT+Sans:400,700,400italic,700italic|Oswald:400,300,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.useso.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
 		<!--//webfonts-->
@@ -54,6 +55,7 @@
 		<div class="login-form">
 			<div class="close"> </div>
 			<div class="head-info">
+				
 				<label class="lbl-1"></label>
 				<label class="lbl-2"> </label>
 				<label class="lbl-3"> </label>
